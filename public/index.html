@@ -20,6 +20,7 @@ a{color:inherit}
 .btn{font:600 14px Inter;background:var(--blue);color:#fff;border:0;border-radius:10px;padding:11px 18px;cursor:pointer;transition:background .15s}
 .btn:hover{background:#2148e0}
 .btn:disabled{opacity:.6;cursor:wait}
+.btn.li{background:#0a66c2;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}.btn.li.on{background:#e7f8f1;color:#047857}
 .btn.mint{background:var(--mint)}.btn.gold{background:var(--gold);color:#fff}.btn.vio{background:var(--ink)}
 nav{display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid var(--line);margin:0 -20px;padding:0 20px;background:#fff}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.02em}
@@ -136,6 +137,7 @@ svg text{font-family:Inter,sans-serif}
       <textarea id="text" placeholder="e.g. Healthtech, pre-seed. Angels ex-FAANG or big enterprise who advise startups and invested in the last 12 months."></textarea>
       <div class="side">
         <input id="me" placeholder="Your name">
+        <label class="btn li" id="liBtn" title="LinkedIn → Settings → Data privacy → Get a copy of your data → Connections"><input type="file" id="liFile" accept=".csv" hidden><span id="liLabel">Import LinkedIn</span></label>
         <button class="btn" id="send">Find angels</button>
       </div>
     </form>
@@ -153,7 +155,39 @@ const initials = (n) => n.split(/\s+/).map((x) => x[0]).slice(0, 2).join("").toU
 const avatar = (a) => a.image ? `<img class="av" src="${esc(a.image)}" onerror="this.outerHTML='<div class=&quot;av&quot;>${esc(initials(a.name))}</div>'">` : `<div class="av">${esc(initials(a.name))}</div>`;
 const fmt = (d) => d ? String(d).slice(0, 7) : "n/a";
 const ROLE = { founder: "Founder", executive: "Executive", employee: "Operator", board: "Board", advisor: "Advisor", linked: "Linked", backer: "Backer", investor: "Investor" };
-const S = { parsed: null, data: null, me: "" };
+const S = { parsed: null, data: null, me: "", conns: [] };
+const norm = (x) => String(x ?? "").toLowerCase().replace(/&/g, "and").replace(/\b(inc|ltd|limited|plc|llc|group|gmbh|the|co|company|corporation|corp)\b/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+function parseCsv(text) {
+  const rows = []; let row = [], f = "", q = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (q) { if (ch === '"' && text[i + 1] === '"') { f += '"'; i++; } else if (ch === '"') q = false; else f += ch; }
+    else if (ch === '"') q = true; else if (ch === ",") { row.push(f); f = ""; }
+    else if (ch === "\n" || ch === "\r") { if (ch === "\r" && text[i + 1] === "\n") i++; row.push(f); rows.push(row); row = []; f = ""; }
+    else f += ch;
+  }
+  if (f || row.length) { row.push(f); rows.push(row); }
+  const h = rows.findIndex((r) => r.some((c) => /first name/i.test(c)));
+  if (h < 0) return [];
+  const idx = (n) => rows[h].findIndex((c) => c.trim().toLowerCase() === n);
+  const [fn, ln, url, co, pos] = ["first name", "last name", "url", "company", "position"].map(idx);
+  return rows.slice(h + 1).filter((r) => r[fn] || r[ln]).map((r) => ({ name: `${r[fn] ?? ""} ${r[ln] ?? ""}`.trim(), url: r[url] ?? "", company: r[co] ?? "", position: r[pos] ?? "" }));
+}
+function setConns(list) {
+  S.conns = list.map((c) => ({ ...c, n: norm(c.name), cn: norm(c.company) }));
+  $("#liLabel").textContent = `✓ ${S.conns.length.toLocaleString()} connections`;
+  $("#liBtn").classList.add("on");
+  if (S.data) render();
+}
+try { const saved = JSON.parse(localStorage.getItem("ad_conns") || "null"); if (saved?.length) setTimeout(() => setConns(saved), 0); } catch {}
+function networkFor(a, close) {
+  if (!S.conns.length) return { direct: [], viaCo: [] };
+  const people = new Map((close ?? []).flatMap((g) => g.people.map((p) => [norm(p.name), { ...p, via: g.company.name }])));
+  const direct = S.conns.filter((c) => people.has(c.n)).map((c) => ({ conn: c, via: people.get(c.n).via }));
+  const cos = new Map(a.career.filter((c) => c.subtype === "company" && !["investor", "backer"].includes(c.role)).map((c) => [norm(c.name), c]));
+  const viaCo = S.conns.filter((c) => c.cn && cos.has(c.cn) && !direct.some((d) => d.conn === c)).map((c) => ({ conn: c, co: cos.get(c.cn) }));
+  return { direct, viaCo };
+}
 
 async function api(path) {
   const r = await fetch(path);
@@ -170,6 +204,14 @@ function say(html, who = "bot") {
   return d;
 }
 document.querySelectorAll("#examples button").forEach((b) => b.onclick = () => { $("#text").value = b.textContent; $("#text").focus(); });
+$("#liFile").addEventListener("change", async (e) => {
+  const file = e.target.files[0]; if (!file) return;
+  const list = parseCsv(await file.text());
+  if (!list.length) { say("That doesn't look like a LinkedIn Connections.csv. Export it from LinkedIn → Settings → Data privacy → Get a copy of your data → Connections."); return; }
+  setConns(list);
+  try { localStorage.setItem("ad_conns", JSON.stringify(list)); } catch {}
+  say(`Imported <b>${list.length.toLocaleString()}</b> LinkedIn connections. They stay in your browser. I'll use them to find warm paths to each angel.`);
+});
 $("#text").addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) $("#compose").requestSubmit(); });
 
 $("#compose").addEventListener("submit", async (e) => {
@@ -254,7 +296,7 @@ function render() {
       <div><div class="nm">${i + 1}. ${esc(a.name)}</div>
         <div class="meta">${esc(a.city ?? "")} · ${a.investments.count} investments · last ${fmt(a.investments.last_round_date)}</div>
         <ul class="why">${a.why.slice(0, 2).map((w) => `<li>${esc(w)}</li>`).join("")}</ul>
-        <div class="badges">${a.bigtech.length ? `<span class="b s">Big tech</span>` : ""}${a.unicorns.length ? `<span class="b g">🦄 x${a.unicorns.length}</span>` : ""}${a.doors.length ? `<span class="b m">🚪 x${a.doors.length}</span>` : ""}${a.advisories.length ? `<span class="b v">Advisor ×${a.advisories.length}</span>` : ""}${a.corporates.length ? `<span class="b">🏢 x${a.corporates.length}</span>` : ""}${a.last_months <= 12 ? `<span class="b p">Active</span>` : ""}</div>
+        <div class="badges">${a.bigtech.length ? `<span class="b s">Big tech</span>` : ""}${a.unicorns.length ? `<span class="b g">🦄 x${a.unicorns.length}</span>` : ""}${a.doors.length ? `<span class="b m">🚪 x${a.doors.length}</span>` : ""}${a.advisories.length ? `<span class="b v">Advisor ×${a.advisories.length}</span>` : ""}${a.corporates.length ? `<span class="b">🏢 x${a.corporates.length}</span>` : ""}${(() => { const n = networkFor(a).viaCo.length; return n ? `<span class="b" style="background:#e8f1fb;color:#0a66c2;border-color:#bcd6f2">in your network ×${n}</span>` : ""; })()}${a.last_months <= 12 ? `<span class="b p">Active</span>` : ""}</div>
       </div>
       <div class="score"><div class="v">${a.score}</div>${hp(a.score)}</div>
     </div>`).join("") || `<div class="loading vt" style="font-size:22px">No matches. Untick a filter in the chat.</div>`;
@@ -357,16 +399,18 @@ async function loadPaths(a) {
     if (!$("#paths")) return;
     const first = a.name.split(" ")[0];
     let html = "";
-    // Demo network: a real person from the angel's inner circle, shown as someone you already know (labelled demo).
-    if (!p.overlaps.length && p.close.length) {
-      const g = p.close.find((x) => x.company.door) ?? p.close[0], c = g.people[0];
-      p.overlaps = [{ connector: c.name, via: g.company.name, demo: true }];
+    const net = networkFor(a, p.close);
+    if (net.direct.length || net.viaCo.length) {
+      html += `<div class="meta" style="margin-bottom:6px"><span class="b" style="background:#e8f1fb;color:#0a66c2;border-color:#bcd6f2">from your LinkedIn</span> ${net.direct.length + net.viaCo.length} path${net.direct.length + net.viaCo.length > 1 ? "s" : ""} into ${esc(first)}</div>`;
+      html += net.direct.slice(0, 3).map((d) => `<div class="path"><span class="node-p you">YOU</span><span class="arrow">─ 1st-degree ─▶</span><a href="#" class="node-p mid" data-conn="${esc(d.conn.name)}" data-via="${esc(d.via)}" data-url="${esc(d.conn.url)}">${esc(d.conn.name)} ✉</a><span class="arrow">─ worked together at ${esc(d.via)} ─▶</span><span class="node-p ang">${esc(first)}</span></div>`).join("");
+      html += net.viaCo.slice(0, 4).map((d) => `<div class="path"><span class="node-p you">YOU</span><span class="arrow">─ 1st-degree ─▶</span><a href="#" class="node-p mid" data-conn="${esc(d.conn.name)}" data-via="${esc(d.co.name)}" data-url="${esc(d.conn.url)}">${esc(d.conn.name)} ✉</a><span class="arrow">─ ${esc(d.conn.position || "works")} at ${esc(d.co.name)} ─▶</span><span class="node-p ang">${esc(first)}</span><span class="meta">(${esc(d.co.title || "was there")})</span></div>`).join("");
+      p.overlaps = [{ skip: true }];
     }
-    if (p.overlaps.length) html += p.overlaps.map((o) => o.connector
-      ? `<div class="path"><span class="node-p you">YOU</span><span class="arrow">─ ${o.demo ? "met at Web Summit" : esc(o.company)} ─▶</span><a href="#" class="node-p mid" data-conn="${esc(o.connector)}" data-via="${esc(o.via)}" data-url="">${esc(o.connector)} ✉</a><span class="arrow">─ worked together at ${esc(o.via)} ─▶</span><span class="node-p ang">${esc(first)}</span>${o.demo ? ` <span class="b">demo network</span>` : ""}</div>${o.demo ? `<div class="meta">${esc(o.connector)} is in your network and worked with ${esc(first)}. Tap them to draft the intro ask.</div>` : ""}`
+    if (p.overlaps.length && !p.overlaps[0].skip) html += p.overlaps.map((o) => o.connector
+      ? `<div class="path"><span class="node-p you">YOU</span><span class="arrow">─ ${esc(o.company)} ─▶</span><a href="#" class="node-p mid" data-conn="${esc(o.connector)}" data-via="${esc(o.via)}" data-url="">${esc(o.connector)} ✉</a><span class="arrow">─ worked together at ${esc(o.via)} ─▶</span><span class="node-p ang">${esc(first)}</span>${o.demo ? ` <span class="b">demo network</span>` : ""}</div>${o.demo ? `<div class="meta">${esc(o.connector)} is in your network and worked with ${esc(first)}. Tap them to draft the intro ask.</div>` : ""}`
       : `<div class="path"><span class="node-p you">YOU</span><span class="arrow">─ both at ─▶</span><span class="node-p co">${esc(o.company)}</span><span class="arrow">◀─</span><span class="node-p ang">${esc(first)}</span></div>`).join("");
-    else if (S.me) html += `<div class="meta" style="margin-bottom:8px">${p.me ? `Found you on Dealroom (${p.me.companies} companies), but no direct overlap with ${esc(first)}.` : `Couldn't find "${esc(S.me)}" on Dealroom.`} Try the inner circle below: if you know any of them, that's your intro.</div>`;
-    else html += `<div class="meta" style="margin-bottom:8px">Add your name in the chat to find shared companies. Meanwhile, the people closest to ${esc(first)}:</div>`;
+    else if (!p.overlaps.length) html += `<div class="quest" style="margin-bottom:10px">No warm pathway known.<div class="meta" style="margin-top:4px">${S.conns.length ? `None of your ${S.conns.length.toLocaleString()} LinkedIn connections overlap with ${esc(first)}.` : "Import your LinkedIn connections to check for mutuals."}</div></div>`;
+    if (p.close.length) html += `<div class="meta" style="margin:4px 0 2px">People who worked with ${esc(first)} (Dealroom):</div>`;
     html += p.close.map((g) => `<div style="margin:8px 0"><div class="meta">${g.company.unicorn ? "🦄 " : ""}<b>${esc(g.company.name)}</b>${g.company.door ? ` <span class="b m">${esc(g.company.industries.map((x) => x.name).join("/"))}</span>` : ""} · ${esc(first)} was ${esc(g.company.angel_title || "there")}</div>${g.people.map((x) => `<a class="person" href="#" data-conn="${esc(x.name)}" data-via="${esc(g.company.name)}" data-url="${esc(x.linkedin || x.dealroom_url || "")}">${esc(x.name)}<span style="color:var(--muted)">${x.title ? " · " + esc(x.title.slice(0, 28)) : ""}</span></a>`).join("")}</div>`).join("") || `<div class="meta">No team data for ${esc(first)}'s companies.</div>`;
     html += `<div class="meta" style="margin-top:8px">LinkedIn mutuals aren't in any public API, so these come from the Dealroom people graph. Know one of them? Tap their name and I'll draft the intro ask.</div>
       <div id="ask" style="display:none;margin-top:12px"><div class="quest" style="margin-bottom:8px">✉ Ask <b id="askWho"></b> for an intro to <u>${esc(a.name)}</u></div>
@@ -384,7 +428,6 @@ async function loadPaths(a) {
       e.preventDefault();
       cur = { name: el.dataset.conn, via: el.dataset.via };
       $("#ask").style.display = "block"; $("#askWho").textContent = cur.name;
-      if (!$("#event").value) $("#event").value = "Web Summit";
       const url = el.dataset.url || `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(cur.name)}`;
       $("#askOpen").href = url; fill();
       $("#ask").scrollIntoView({ behavior: "smooth", block: "nearest" });
