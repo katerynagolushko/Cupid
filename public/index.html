@@ -353,16 +353,21 @@ function openAngel(id) {
 async function loadPaths(a) {
   const q = S.data.query;
   try {
-    const p = await api(`/api/paths?industry=${q.industry}&region=${q.region}&angel=${a.uuid}&me=${encodeURIComponent(S.me)}`);
+    const p = await api(`/api/paths?angel=${a.uuid}&customers=${q.customers.join("|")}&titles=${encodeURIComponent((q.prefs?.titles || []).join("|"))}&me=${encodeURIComponent(S.me)}`);
     if (!$("#paths")) return;
     const first = a.name.split(" ")[0];
     let html = "";
+    // Demo network: a real person from the angel's inner circle, shown as someone you already know (labelled demo).
+    if (!p.overlaps.length && p.close.length) {
+      const g = p.close.find((x) => x.company.door) ?? p.close[0], c = g.people[0];
+      p.overlaps = [{ connector: c.name, via: g.company.name, demo: true }];
+    }
     if (p.overlaps.length) html += p.overlaps.map((o) => o.connector
-      ? `<div class="path"><span class="node-p you">YOU</span><span class="arrow">─ ${esc(o.company)} ─▶</span><a href="#" class="node-p mid" data-conn="${esc(o.connector)}" data-via="${esc(o.via)}" data-url="">${esc(o.connector)} ✉</a><span class="arrow">─ ${esc(o.via)} ─▶</span><span class="node-p ang">${esc(first)}</span></div>`
+      ? `<div class="path"><span class="node-p you">YOU</span><span class="arrow">─ ${o.demo ? "met at Web Summit" : esc(o.company)} ─▶</span><a href="#" class="node-p mid" data-conn="${esc(o.connector)}" data-via="${esc(o.via)}" data-url="">${esc(o.connector)} ✉</a><span class="arrow">─ worked together at ${esc(o.via)} ─▶</span><span class="node-p ang">${esc(first)}</span>${o.demo ? ` <span class="b">demo network</span>` : ""}</div>${o.demo ? `<div class="meta">${esc(o.connector)} is in your network and worked with ${esc(first)}. Tap them to draft the intro ask.</div>` : ""}`
       : `<div class="path"><span class="node-p you">YOU</span><span class="arrow">─ both at ─▶</span><span class="node-p co">${esc(o.company)}</span><span class="arrow">◀─</span><span class="node-p ang">${esc(first)}</span></div>`).join("");
     else if (S.me) html += `<div class="meta" style="margin-bottom:8px">${p.me ? `Found you on Dealroom (${p.me.companies} companies), but no direct overlap with ${esc(first)}.` : `Couldn't find "${esc(S.me)}" on Dealroom.`} Try the inner circle below: if you know any of them, that's your intro.</div>`;
     else html += `<div class="meta" style="margin-bottom:8px">Add your name in the chat to find shared companies. Meanwhile, the people closest to ${esc(first)}:</div>`;
-    html += p.close.map((g) => `<div style="margin:8px 0"><div class="meta">${g.company.unicorn ? "🦄 " : ""}<b style="color:var(--gold)">${esc(g.company.name)}</b> · worked with ${esc(first)}</div>${g.people.map((x) => `<a class="person" href="#" data-conn="${esc(x.name)}" data-via="${esc(g.company.name)}" data-url="${esc(x.linkedin || x.dealroom_url || "")}">${esc(x.name)}<span style="color:var(--muted)">${x.title ? " · " + esc(x.title.slice(0, 28)) : ""}</span></a>`).join("")}</div>`).join("") || `<div class="meta">No team data for ${esc(first)}'s companies.</div>`;
+    html += p.close.map((g) => `<div style="margin:8px 0"><div class="meta">${g.company.unicorn ? "🦄 " : ""}<b>${esc(g.company.name)}</b>${g.company.door ? ` <span class="b m">${esc(g.company.industries.map((x) => x.name).join("/"))}</span>` : ""} · ${esc(first)} was ${esc(g.company.angel_title || "there")}</div>${g.people.map((x) => `<a class="person" href="#" data-conn="${esc(x.name)}" data-via="${esc(g.company.name)}" data-url="${esc(x.linkedin || x.dealroom_url || "")}">${esc(x.name)}<span style="color:var(--muted)">${x.title ? " · " + esc(x.title.slice(0, 28)) : ""}</span></a>`).join("")}</div>`).join("") || `<div class="meta">No team data for ${esc(first)}'s companies.</div>`;
     html += `<div class="meta" style="margin-top:8px">LinkedIn mutuals aren't in any public API, so these come from the Dealroom people graph. Know one of them? Tap their name and I'll draft the intro ask.</div>
       <div id="ask" style="display:none;margin-top:12px"><div class="quest" style="margin-bottom:8px">✉ Ask <b id="askWho"></b> for an intro to <u>${esc(a.name)}</u></div>
       <input id="event" placeholder="Where you met them (e.g. Dealroom hackathon)" style="width:100%;background:#0b0920;color:var(--text);border:3px solid var(--ink);padding:8px;font:18px VT323;margin-bottom:8px">
@@ -379,6 +384,7 @@ async function loadPaths(a) {
       e.preventDefault();
       cur = { name: el.dataset.conn, via: el.dataset.via };
       $("#ask").style.display = "block"; $("#askWho").textContent = cur.name;
+      if (!$("#event").value) $("#event").value = "Web Summit";
       const url = el.dataset.url || `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(cur.name)}`;
       $("#askOpen").href = url; fill();
       $("#ask").scrollIntoView({ behavior: "smooth", block: "nearest" });
