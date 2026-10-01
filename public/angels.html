@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angel Doors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f7fb; --panel:#fff; --panel2:#f7f9fc; --line:#e3e8f1; --ink:#0a1a3f; --text:#0a1a3f; --muted:#6b7895;
+  --blue:#2f5bff; --blue2:#eef2ff; --gold:#f5a524; --mint:#10b981; --pink:#2f5bff; --vio:#2f5bff; --sky:#7c5cff; --grey:#a3aec2;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:14px/1.5 Inter,system-ui,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1320px;margin:0 auto;padding:0 20px 60px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 2px #0a1a3f0a,0 4px 16px #0a1a3f08}
+.btn{font:600 14px Inter;background:var(--blue);color:#fff;border:0;border-radius:10px;padding:11px 18px;cursor:pointer;transition:background .15s}
+.btn:hover{background:#2148e0}
+.btn:disabled{opacity:.6;cursor:wait}
+.btn.mint{background:var(--mint)}.btn.gold{background:var(--gold);color:#fff}.btn.vio{background:var(--ink)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px;border-bottom:1px solid var(--line);margin:0 -20px;padding:0 20px;background:#fff}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.02em}
+.logo .mark{width:28px;height:28px;border-radius:8px;background:var(--blue);display:grid;place-items:center;color:#fff;font-size:14px}
+.logo span{color:var(--blue)}
+.powered{font-size:12px;color:var(--muted)}
+.powered b{color:var(--ink)}
+.hero{text-align:center;padding:44px 0 18px}
+.hero h1{font-size:clamp(28px,3.6vw,44px);line-height:1.1;letter-spacing:-.03em;margin:0;font-weight:800}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.chat{max-width:860px;margin:20px auto 0;overflow:hidden}
+.msgs{padding:18px;display:flex;flex-direction:column;gap:10px;max-height:420px;overflow:auto}
+.msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:14.5px;line-height:1.45}
+.msg.bot{background:var(--panel2);border:1px solid var(--line);align-self:flex-start;border-top-left-radius:4px}
+.msg.me{background:var(--blue);color:#fff;align-self:flex-end;border-top-right-radius:4px}
+.msg .who{display:none}
+.compose{display:flex;gap:10px;padding:12px;border-top:1px solid var(--line);background:#fff;align-items:flex-end;flex-wrap:wrap}
+.compose textarea{flex:1;min-width:240px;min-height:52px;max-height:200px;resize:vertical;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;font:14.5px/1.4 Inter;outline:none}
+.compose textarea:focus,.compose input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2f5bff22}
+.compose .side{display:flex;gap:8px;align-items:center}
+.compose input{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font:14px Inter;outline:none;width:170px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font:500 12.5px Inter;padding:4px 10px;border-radius:99px;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;user-select:none}
+.chip.on{background:var(--blue2);border-color:#c7d3ff;color:var(--blue)}
+.chip.ind{background:var(--ink);color:#fff;border-color:var(--ink);cursor:default}
+.chip.cust{background:#e7f8f1;color:#047857;border-color:#b5ead4;cursor:default}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}
+.stat{padding:14px 16px}
+.stat .n{font-size:26px;font-weight:800;letter-spacing:-.03em}
+.stat .l{font-size:12.5px;color:var(--muted)}
+.stat.g .n{color:var(--gold)}.stat.m .n{color:var(--mint)}.stat.p .n{color:var(--blue)}.stat.s .n{color:var(--sky)}
+.main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:16px}
+.card{overflow:hidden}
+.card h3{margin:0;padding:14px 16px;border-bottom:1px solid var(--line);font-size:14px;font-weight:700;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.card h3 span{font-size:12px;font-weight:400;color:var(--muted)}
+#graph{width:100%;height:620px;display:block;background:radial-gradient(circle at center,#eef2ff 0,#fff 65%)}
+.legend{display:flex;gap:14px;padding:10px 16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);flex-wrap:wrap}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.list{max-height:680px;overflow:auto}
+.angel{display:grid;grid-template-columns:auto 1fr auto;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s}
+.angel:hover,.angel.hl{background:#f5f8ff}
+.av{width:44px;height:44px;border-radius:50%;background:var(--blue2);object-fit:cover;display:grid;place-items:center;font:700 14px Inter;color:var(--blue)}
+.nm{font-weight:700;font-size:15px}
+.meta{font-size:12.5px;color:var(--muted)}
+.why{margin:6px 0 0;padding:0;list-style:none;font-size:13px;color:#33415e}
+.why li{padding-left:14px;position:relative;margin:2px 0}
+.why li:before{content:"";position:absolute;left:2px;top:8px;width:5px;height:5px;border-radius:50%;background:var(--blue)}
+.badges{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.b{font:600 11px Inter;padding:3px 8px;border-radius:6px;background:var(--panel2);color:var(--muted);border:1px solid var(--line);text-decoration:none}
+.b.g{background:#fff6e6;color:#b45309;border-color:#fde3b0}.b.m{background:#e7f8f1;color:#047857;border-color:#b5ead4}.b.p{background:var(--blue2);color:var(--blue);border-color:#c7d3ff}.b.v{background:var(--blue2);color:var(--blue);border-color:#c7d3ff}.b.s{background:#f1edff;color:#5b3fd6;border-color:#dcd2ff}
+.score{width:56px;text-align:center}
+.score .v{font-size:20px;font-weight:800;color:var(--blue);letter-spacing:-.02em}
+.score .hp{height:5px;border-radius:99px;background:var(--line);margin-top:6px;overflow:hidden;display:flex}
+.score .hp i{flex:1}
+.score .hp i.on{background:var(--blue)}
+.hubs{display:flex;flex-wrap:wrap;gap:8px;padding:14px 16px}
+.hub{font-size:13px;padding:6px 12px;border-radius:99px;border:1px solid var(--line);background:var(--panel2);cursor:pointer}
+.hub:hover{border-color:var(--blue);color:var(--blue)}
+.method{color:var(--muted);font-size:12px;margin-top:18px}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:#fff;border-left:1px solid var(--line);box-shadow:-20px 0 50px #0a1a3f1f;transform:translateX(105%);transition:transform .25s ease;z-index:50;overflow:auto}
+.drawer.open{transform:none}
+.dh{padding:18px 20px;display:flex;gap:14px;align-items:center;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:2}
+.dh .av{width:56px;height:56px}
+.x{margin-left:8px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:10px;width:36px;height:36px;cursor:pointer;font:600 14px Inter}
+.sec{padding:16px 20px;border-bottom:1px solid var(--line)}
+.sec h4{margin:0 0 10px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+.barr{display:grid;grid-template-columns:150px 1fr 28px;gap:10px;align-items:center;font-size:13px;margin:6px 0}
+.barr .t{height:7px;background:var(--line);border-radius:99px;display:flex;overflow:hidden}
+.barr .t i{display:block;height:100%;flex:0 0 auto}
+.job{display:grid;grid-template-columns:30px 1fr auto;gap:10px;padding:7px 0;align-items:center;font-size:13px}
+.job img,.job .ph{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);object-fit:cover}
+.job .co{font-weight:600}
+.job .ti{color:var(--muted);font-size:12px}
+.job.door .co{color:#047857}
+.quest{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13.5px}
+.quest b{color:var(--blue)} .quest u{text-decoration:none;font-weight:700}
+.path{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13px;margin:8px 0}
+.node-p{padding:3px 10px;border-radius:99px;font-weight:600;text-decoration:none}
+.node-p.you{background:var(--ink);color:#fff}.node-p.mid{background:#f1edff;color:#5b3fd6}.node-p.ang{background:var(--blue);color:#fff}.node-p.co{background:#fff6e6;color:#b45309}
+.arrow{color:var(--muted)}
+.person{display:inline-flex;gap:6px;align-items:center;font-size:12.5px;border:1px solid var(--line);border-radius:99px;background:#fff;padding:4px 10px;margin:3px;text-decoration:none}
+.person:hover{border-color:var(--blue);color:var(--blue)}
+textarea.draft{width:100%;min-height:150px;background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;font:13.5px/1.45 Inter}
+#event{width:100%;background:var(--panel2)!important;color:var(--text)!important;border:1px solid var(--line)!important;border-radius:10px;padding:10px!important;font:13.5px Inter!important;margin-bottom:8px}
+.loading{padding:60px 20px;text-align:center}
+.loader{display:inline-block;width:28px;height:28px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--blue);animation:sp .8s linear infinite}
+.loader i{display:none}
+@keyframes sp{to{transform:rotate(360deg)}}
+.log{font-size:13px;color:var(--muted);margin-top:14px;line-height:1.7}
+.cursor:after{content:"…"}
+svg text{font-family:Inter,sans-serif}
+.gnode{cursor:pointer}
+.dim{opacity:.12}
+#results{scroll-margin-top:10px}
+@media (max-width:1100px){.main{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.compose .side{width:100%}.compose input{flex:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo"><div class="mark">◆</div>Angel<span>Doors</span></div>
+    <div class="powered">Powered by <b>dealroom.co</b> API</div>
+  </nav>
+
+  <section class="hero">
+    <h1>Find angels who open <em>doors</em></h1>
+  </section>
+
+  <div class="chat box">
+    <div class="msgs" id="msgs">
+      <div class="msg bot"><span class="who">DOORBOT</span>What are you building, and what kind of angel do you need?</div>
+    </div>
+    <form class="compose" id="compose">
+      <textarea id="text" placeholder="e.g. Healthtech, pre-seed. Angels ex-FAANG or big enterprise who advise startups and invested in the last 12 months."></textarea>
+      <div class="side">
+        <input id="me" placeholder="Your name">
+        <button class="btn" id="send">Find angels</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="results"></div>
+  <div class="method" id="method"></div>
+</div>
+<aside class="drawer" id="drawer"></aside>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const initials = (n) => n.split(/\s+/).map((x) => x[0]).slice(0, 2).join("").toUpperCase();
+const avatar = (a) => a.image ? `<img class="av" src="${esc(a.image)}" onerror="this.outerHTML='<div class=&quot;av&quot;>${esc(initials(a.name))}</div>'">` : `<div class="av">${esc(initials(a.name))}</div>`;
+const fmt = (d) => d ? String(d).slice(0, 7) : "n/a";
+const ROLE = { founder: "Founder", executive: "Executive", employee: "Operator", board: "Board", advisor: "Advisor", linked: "Linked", backer: "Backer", investor: "Investor" };
+const S = { parsed: null, data: null, me: "" };
+
+async function api(path) {
+  const r = await fetch(path); const j = await r.json();
+  if (!r.ok) throw new Error(j.error || r.statusText);
+  return j;
+}
+function say(html, who = "bot") {
+  const d = document.createElement("div");
+  d.className = `msg ${who}`;
+  d.innerHTML = `<span class="who">${who === "bot" ? "DOORBOT" : "YOU"}</span>${html}`;
+  $("#msgs").appendChild(d); $("#msgs").scrollTop = 1e9;
+  return d;
+}
+document.querySelectorAll("#examples button").forEach((b) => b.onclick = () => { $("#text").value = b.textContent; $("#text").focus(); });
+$("#text").addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) $("#compose").requestSubmit(); });
+
+$("#compose").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const text = $("#text").value.trim();
+  if (!text) return;
+  S.me = $("#me").value.trim();
+  say(esc(text), "me");
+  $("#text").value = "";
+  S.parsed = await api(`/api/parse?text=${encodeURIComponent(text)}`);
+  understood();
+  search();
+});
+
+function understood() {
+  const p = S.parsed, pr = p.prefs;
+  const t = (k, label) => `<span class="chip ${pr[k] ? "on" : ""}" data-k="${k}">${pr[k] ? "■" : "□"} ${label}</span>`;
+  const m = say(`${p.reply ? esc(p.reply) + "<br>" : ""}<span style="color:var(--muted);font-size:12.5px">Tap to adjust</span>
+    <div class="chips"><span class="chip ind">builds: ${esc(p.industryName)}</span><span class="chip cust">sells to: ${esc(p.customerNames.join(" + "))}</span>
+    ${["Pre-Seed", "Seed", "Series A"].map((s) => `<span class="chip ${p.stage === s ? "on" : ""}" data-stage="${s}">${s}</span>`).join("")}
+    ${t("bigtech", "ex-FAANG / big tech")}${t("enterprise", "large enterprise")}${t("unicorn", "unicorn operator")}${t("advisor", "advises startups")}
+    <span class="chip ${pr.months ? "on" : ""}" data-k="months">${pr.months ? "■" : "□"} invested in last ${pr.months || 12} mo</span></div>`);
+  m.querySelectorAll("[data-k]").forEach((c) => c.onclick = () => {
+    const k = c.dataset.k;
+    pr[k] = k === "months" ? (pr.months ? null : 12) : !pr[k];
+    c.classList.toggle("on"); c.innerHTML = c.innerHTML.replace(/^[■□]/, pr[k] ? "■" : "□");
+    search(true);
+  });
+  m.querySelectorAll("[data-stage]").forEach((c) => c.onclick = () => {
+    p.stage = c.dataset.stage; m.querySelectorAll("[data-stage]").forEach((x) => x.classList.toggle("on", x === c)); search(true);
+  });
+}
+
+async function search(quiet) {
+  const p = S.parsed, pr = p.prefs;
+  const qs = new URLSearchParams({ industry: p.industry, customers: p.customers.join("|"), stage: p.stage, region: p.region,
+    bigtech: +pr.bigtech, enterprise: +pr.enterprise, unicorn: +pr.unicorn, advisor: +pr.advisor, months: pr.months || "" });
+  $("#send").disabled = true;
+  const t0 = Date.now();
+  $("#results").innerHTML = `<div class="loading"><div class="loader"><i></i><i></i><i></i><i></i></div><div class="log" id="log"></div></div>`;
+  const steps = [`Finding active ${esc(p.industryName)} angels`, "Reading their careers", "Ranking"];
+  let i = 0; const tick = setInterval(() => { if (i < steps.length && $("#log")) $("#log").innerHTML += steps[i++] + "<br>"; }, 380);
+  try {
+    S.data = await api(`/api/angels?${qs}`);
+    clearInterval(tick);
+    render();
+    const op = new URLSearchParams(location.search).get("open");
+    if (op) { const a = S.data.angels.find((x) => x.name === op) ?? S.data.angels[0]; if (a) setTimeout(() => { openAngel(a.uuid); setTimeout(() => document.querySelector("#paths [data-conn]")?.click(), 2500); }, 50); }
+    const top = S.data.angels[0];
+    if (!quiet) say(top ? `Found <b>${S.data.stats.shown}</b> angels. Top pick: <b>${esc(top.name)}</b>. Tap anyone for intro paths.` : `No angels matched all of that. Untick a filter above.`);
+    if (!quiet) $("#results").scrollIntoView({ behavior: "smooth" });
+  } catch (err) {
+    clearInterval(tick);
+    $("#results").innerHTML = "";
+    say(`Something broke: ${esc(err.message)}`);
+  } finally { $("#send").disabled = false; }
+}
+
+function hp(score) { const n = Math.round(score / 10); return `<div class="hp">${Array.from({ length: 10 }, (_, i) => `<i class="${i < n ? "on" : ""}"></i>`).join("")}</div>`; }
+
+function render() {
+  const d = S.data, s = d.stats, q = d.query;
+  $("#results").innerHTML = `
+    <div class="stats">
+      <div class="stat box"><div class="n">${s.pool}</div><div class="l">active ${esc(q.industryName)} angels</div></div>
+      <div class="stat box p"><div class="n">${s.shown}</div><div class="l">match you</div></div>
+      <div class="stat box s"><div class="n">${s.bigtech_angels}</div><div class="l">ex big tech</div></div>
+      <div class="stat box g"><div class="n">${s.unicorn_companies}</div><div class="l">unicorns in careers</div></div>
+      <div class="stat box m"><div class="n">${s.door_companies}</div><div class="l">customer doors</div></div>
+    </div>
+    <div class="main">
+      <div class="card box"><h3>Network <span>you → angels → where they worked</span></h3><svg id="graph"></svg>
+        <div class="legend"><span><i style="background:var(--ink)"></i>You</span><span><i style="background:var(--blue)"></i>Angel</span><span><i style="background:var(--gold)"></i>Unicorn</span><span><i style="background:var(--sky)"></i>Big tech</span><span><i style="background:var(--mint)"></i>${esc(q.customerNames.join("/"))}</span><span><i style="background:var(--grey)"></i>Enterprise</span></div></div>
+      <div class="card box"><h3>Strategic angels <span>${esc(q.stage)} · ${d.from_cache ? "cached" : "live"} · ${new Date(d.retrieved_at).toLocaleTimeString()}</span></h3><div class="list" id="list"></div></div>
+    </div>
+    ${d.hubs.length ? `<div class="card box" style="margin-top:22px"><h3>Shared networks <span>one intro reaches several angels</span></h3><div class="hubs">${d.hubs.slice(0, 14).map((h) => `<div class="hub" data-hub="${h.uuid}">${h.unicorn ? "🦄 " : ""}${esc(h.name)} · ${h.angels.length}</div>`).join("")}</div></div>` : ""}`;
+  $("#list").innerHTML = d.angels.slice(0, 30).map((a, i) => `
+    <div class="angel" data-id="${a.uuid}">${avatar(a)}
+      <div><div class="nm">${i + 1}. ${esc(a.name)}</div>
+        <div class="meta">${esc(a.city ?? "")} · ${a.investments.count} investments · last ${fmt(a.investments.last_round_date)}</div>
+        <ul class="why">${a.why.slice(0, 2).map((w) => `<li>${esc(w)}</li>`).join("")}</ul>
+        <div class="badges">${a.bigtech.length ? `<span class="b s">Big tech</span>` : ""}${a.unicorns.length ? `<span class="b g">🦄 x${a.unicorns.length}</span>` : ""}${a.doors.length ? `<span class="b m">🚪 x${a.doors.length}</span>` : ""}${a.advisories.length ? `<span class="b v">Advisor ×${a.advisories.length}</span>` : ""}${a.corporates.length ? `<span class="b">🏢 x${a.corporates.length}</span>` : ""}${a.last_months <= 12 ? `<span class="b p">Active</span>` : ""}</div>
+      </div>
+      <div class="score"><div class="v">${a.score}</div>${hp(a.score)}</div>
+    </div>`).join("") || `<div class="loading vt" style="font-size:22px">No matches. Untick a filter in the chat.</div>`;
+  $("#list").onclick = (e) => { const el = e.target.closest(".angel"); if (el) openAngel(el.dataset.id); };
+  document.querySelectorAll(".hub").forEach((h) => h.onclick = () => hub(h.dataset.hub));
+  $("#method").innerHTML = `Source: Dealroom API · retrieved ${new Date(d.retrieved_at).toLocaleString()}`;
+  graph();
+}
+
+function graph() {
+  const d = S.data, svg = $("#graph"); if (!svg) return;
+  const W = svg.clientWidth || 640, H = 620, cx = W / 2, cy = H / 2;
+  const top = d.angels.slice(0, 12), cust = new Set(d.query.customers);
+  const R1 = Math.min(W, H) * 0.25, R2 = Math.min(W, H) * 0.43;
+  const nodes = [], edges = [], comp = new Map();
+  const isDoor = (c) => c.industries.some((x) => cust.has(x.id));
+  top.forEach((a, i) => {
+    const ang = (i / top.length) * Math.PI * 2 - Math.PI / 2;
+    const n = { id: a.uuid, a, x: cx + R1 * Math.cos(ang), y: cy + R1 * Math.sin(ang) };
+    nodes.push(n); edges.push({ a: a.uuid, x1: cx, y1: cy, n, core: 1 });
+    a.career.filter((c) => !["investor", "backer"].includes(c.role))
+      .map((c) => ({ c, w: isDoor(c) * 2 + !!c.unicorn * 2 + !!c.bigtech * 2 + c.corporate * 0.8 }))
+      .filter((x) => x.w > 0).sort((x, y) => y.w - x.w).slice(0, 4)
+      .forEach(({ c }) => { if (!comp.has(c.uuid)) comp.set(c.uuid, { c, angs: [], ns: [] }); comp.get(c.uuid).angs.push(ang); comp.get(c.uuid).ns.push(n); });
+  });
+  const cs = [...comp.values()];
+  cs.forEach((v) => { v.ang = Math.atan2(v.angs.reduce((s, a) => s + Math.sin(a), 0), v.angs.reduce((s, a) => s + Math.cos(a), 0)); v.r = v.ns.length > 1 ? R1 * 1.4 : R2; });
+  const ring = cs.filter((v) => v.r === R2).sort((a, b) => a.ang - b.ang);
+  for (let k = 0; k < 80; k++) for (let i = 0; i < ring.length; i++) {
+    const a = ring[i], b = ring[(i + 1) % ring.length]; let gap = b.ang - a.ang; if (gap < 0) gap += Math.PI * 2;
+    const min = (Math.PI * 2 / Math.max(ring.length, 1)) * 0.9; if (gap < min && ring.length > 1) { a.ang -= (min - gap) / 2; b.ang += (min - gap) / 2; }
+  }
+  const col = (c) => c.unicorn ? "#f5a524" : c.bigtech ? "#7c5cff" : isDoor(c) ? "#10b981" : "#a3aec2";
+  const sq = (x, y, s, fill, extra = "") => `<circle cx="${x}" cy="${y}" r="${s / 2}" fill="${fill}" stroke="#fff" stroke-width="2.5" ${extra}/>`;
+  let comps = "";
+  cs.forEach((v, i) => {
+    const r = v.r + (v.r === R2 ? (i % 2 ? -16 : 14) : 0), x = cx + r * Math.cos(v.ang), y = cy + r * Math.sin(v.ang);
+    v.ns.forEach((n) => edges.push({ a: n.id, c: v.c.uuid, x1: n.x, y1: n.y, n: { x, y }, color: col(v.c) }));
+    const lab = v.c.name.replace(/\s*\|.*$/, "").length > 13 ? v.c.name.replace(/\s*\|.*$/, "").slice(0, 12) + "…" : v.c.name.replace(/\s*\|.*$/, "");
+    comps += `<g class="gnode" data-c="${v.c.uuid}">${sq(x, y, v.ns.length > 1 ? 16 : 12, col(v.c))}<text x="${x}" y="${y + (y > cy ? 22 : -12)}" text-anchor="middle" fill="#33415e" stroke="#fff" stroke-width="4" paint-order="stroke" font-size="11.5">${esc(lab)}</text><title>${esc(v.c.name)}${v.c.unicorn ? " · " + v.c.unicorn : ""}${v.c.bigtech ? " · big tech" : ""} · ${esc(v.c.industries.map((x) => x.name).join("/"))}${v.ns.length > 1 ? ` · links ${v.ns.length} angels` : ""}</title></g>`;
+  });
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.innerHTML = `
+    ${edges.map((e) => `<line class="edge" data-a="${e.a}" data-c="${e.c ?? ""}" x1="${e.x1}" y1="${e.y1}" x2="${e.n.x}" y2="${e.n.y}" stroke="${e.core ? "#2f5bff33" : e.color + "88"}" stroke-width="1.5" stroke-dasharray="${e.core ? "3 4" : "0"}"/>`).join("")}
+    ${sq(cx, cy, 46, "#0a1a3f")}<text x="${cx}" y="${cy + 4}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">YOU</text>
+    <text x="${cx}" y="${cy + 40}" text-anchor="middle" font-size="11.5" fill="#6b7895">${esc(d.query.industryName + " · " + d.query.stage)}</text>
+    ${comps}
+    ${nodes.map((n) => `<g class="gnode" data-a="${n.id}">${sq(n.x, n.y, 32, "#2f5bff")}<text x="${n.x}" y="${n.y + 4}" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">${esc(initials(n.a.name))}</text><text x="${n.x}" y="${n.y + 32}" text-anchor="middle" font-size="12" font-weight="600" fill="#0a1a3f" stroke="#fff" stroke-width="4" paint-order="stroke">${esc(n.a.name)}</text><title>${esc(n.a.name)} · score ${n.a.score}</title></g>`).join("")}`;
+  svg.querySelectorAll(".gnode[data-a]").forEach((g) => { g.onmouseenter = () => focus(g.dataset.a); g.onmouseleave = clear; g.onclick = () => openAngel(g.dataset.a); });
+  svg.querySelectorAll(".gnode[data-c]").forEach((g) => { g.onmouseenter = () => hub(g.dataset.c, true); g.onmouseleave = clear; });
+}
+function focus(id) {
+  const cos = new Set([...document.querySelectorAll(`#graph .edge[data-a="${id}"]`)].map((e) => e.dataset.c));
+  document.querySelectorAll("#graph .edge").forEach((e) => e.classList.toggle("dim", e.dataset.a !== id));
+  document.querySelectorAll("#graph .gnode").forEach((n) => n.classList.toggle("dim", n.dataset.a ? n.dataset.a !== id : !cos.has(n.dataset.c)));
+  document.querySelectorAll(".angel").forEach((el) => el.classList.toggle("hl", el.dataset.id === id));
+}
+function hub(co, fromGraph) {
+  const as = new Set(S.data.angels.filter((a) => a.career.some((c) => c.uuid === co)).map((a) => a.uuid));
+  document.querySelectorAll("#graph .edge").forEach((e) => e.classList.toggle("dim", !(e.dataset.c === co || (e.dataset.c === "" && as.has(e.dataset.a)))));
+  document.querySelectorAll("#graph .gnode").forEach((n) => n.classList.toggle("dim", n.dataset.a ? !as.has(n.dataset.a) : n.dataset.c !== co));
+  document.querySelectorAll(".angel").forEach((el) => el.classList.toggle("hl", as.has(el.dataset.id)));
+  if (!fromGraph) document.querySelector(".angel.hl")?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+function clear() { document.querySelectorAll("#graph .dim").forEach((e) => e.classList.remove("dim")); document.querySelectorAll(".angel.hl").forEach((e) => e.classList.remove("hl")); }
+
+function openAngel(id) {
+  const d = S.data, a = d.angels.find((x) => x.uuid === id); if (!a) return;
+  const cust = new Set(d.query.customers), isDoor = (c) => c.industries.some((x) => cust.has(x.id));
+  const op = (c) => !["investor", "backer"].includes(c.role);
+  const rankC = (c) => isDoor(c) * 3 + !!c.bigtech * 2.5 + !!c.unicorn * 2 + c.corporate + op(c);
+  const career = [...a.career].sort((x, y) => rankC(y) - rankC(x));
+  const door = career.find((c) => isDoor(c) && op(c)) ?? career.find((c) => c.corporate && op(c));
+  const big = career.find((c) => c.bigtech && op(c)), uni = career.find((c) => c.unicorn && op(c));
+  const P = [["Background match", a.parts.background, 25, "var(--sky)"], ["Customer doors", a.parts.doors, 25, "var(--mint)"], ["Advisor seats", a.parts.advisor, 15, "var(--vio)"], [`${d.query.industryName} deals`, a.parts.sector, 15, "var(--gold)"], ["Stage fit", a.parts.stage, 10, "var(--pink)"], ["Recently active", a.parts.recency, 10, "#fff"]];
+  const cells = (v, m, c) => Array.from({ length: m }, (_, i) => `<i style="width:calc(${100 / m}% - 2px);background:${i < v ? c : "transparent"}"></i>`).join("");
+  const hook = door ? `your work in ${d.query.customerNames.join("/")} (I saw you were at ${door.name})` : big ? `how you scaled things at ${big.name}` : uni ? `your time at ${uni.name}` : `your ${d.query.industryName} investments`;
+  const draft = `Hi ${a.name.split(" ")[0]},\n\nI'm building a ${d.query.industryName.toLowerCase()} company, raising our ${d.query.stage.toLowerCase()} round. I'm reaching out because of ${hook}.${a.deals[0] ? ` You backed ${a.deals[0].name}, which is close to what we do.` : ""}\n\nWe sell into ${d.query.customerNames.join(" and ")}, and an angel who knows those buyers would change our next 12 months. Open to a 20 min call?\n\n${S.me || "[your name]"}`;
+  $("#drawer").innerHTML = `
+    <div class="dh">${avatar(a)}<div><div class="nm" style="font-size:13px">${esc(a.name)}</div><div class="meta">${esc(a.city ?? "")} · ${a.investments.count} investments · last ${fmt(a.investments.last_round_date)}</div>
+      <div class="badges"><a class="b v" href="${esc(a.dealroom_url)}" target="_blank">Dealroom ↗</a>${a.linkedin ? `<a class="b s" href="${esc(a.linkedin)}" target="_blank">LinkedIn ↗</a>` : `<a class="b s" href="https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(a.name)}" target="_blank">LinkedIn ↗</a>`}${a.twitter ? `<a class="b" href="${esc(a.twitter)}" target="_blank">X ↗</a>` : ""}</div></div>
+      <div class="score" style="margin-left:auto"><div class="v">${a.score}</div>${hp(a.score)}</div><button class="x" onclick="closeD()">✕</button></div>
+    <div class="sec"><h4>Why this angel</h4><div class="quest">
+      ${big ? `Was <b>${esc(ROLE[big.role].toLowerCase())}${big.title ? ` (${esc(big.title)})` : ""}</b> at <u>${esc(big.name)}</u>.<br>` : ""}
+      ${door ? `Was <b>${esc(ROLE[door.role].toLowerCase())}${door.title ? ` (${esc(door.title)})` : ""}</b> at <u>${esc(door.name)}</u>${door.employees ? ` (${door.employees.toLocaleString()} staff)` : ""}: a door into your customers.<br>` : ""}
+      ${uni && uni !== big && uni !== door ? `Unicorn pattern-matching from <u>${esc(uni.name)}</u> (${esc(uni.unicorn)}).<br>` : ""}
+      ${a.advisories.length ? `Sits as advisor/board at <b>${a.advisories.length}</b> companies.` : ""}</div></div>
+    <div class="sec"><h4>Warm intro paths</h4><div id="paths"><div class="loader"><i></i><i></i><i></i><i></i></div> <span class="meta">walking the people graph…</span></div></div>
+    <div class="sec"><h4>Score</h4>${P.map(([l, v, m, c]) => `<div class="barr"><span>${l}</span><div class="t">${cells(v, m, c)}</div><b>${v}</b></div>`).join("")}</div>
+    <div class="sec"><h4>Career · ${a.career.length} companies</h4>${career.map((c) => `<div class="job ${isDoor(c) ? "door" : ""}">${c.image ? `<img src="${esc(c.image)}" onerror="this.className='ph';this.removeAttribute('src')">` : `<div class="ph"></div>`}<div><div class="co">${c.unicorn ? "🦄 " : ""}${esc(c.name)}</div><div class="ti">${esc(ROLE[c.role])}${c.title ? ` · ${esc(c.title)}` : ""}${c.is_past ? " · past" : ""}${c.industries.length ? ` · ${esc(c.industries.map((x) => x.name).join("/"))}` : ""}${c.employees ? ` · ${c.employees.toLocaleString()} staff` : ""}</div></div><div>${c.bigtech ? `<span class="b s">Big tech</span>` : ""}${isDoor(c) ? `<span class="b m">Door</span>` : ""}${c.unicorn ? `<span class="b g">${esc(c.unicorn)}</span>` : ""}</div></div>`).join("") || `<div class="meta">No career records on Dealroom.</div>`}</div>
+    <div class="sec"><h4>${esc(d.query.industryName)} deals · ${a.deals.length}</h4>${a.deals.slice(0, 10).map((x) => `<div class="job">${x.image ? `<img src="${esc(x.image)}" onerror="this.className='ph';this.removeAttribute('src')">` : `<div class="ph"></div>`}<div><div class="co"><a href="${esc(x.dealroom_url)}" target="_blank">${esc(x.name)}</a></div><div class="ti">${esc((x.tagline ?? "").slice(0, 80))}</div></div><div class="ti">${x.is_lead ? `<span class="b p">Lead</span> ` : ""}${fmt(x.last_round_date)}</div></div>`).join("") || `<div class="meta">None returned.</div>`}</div>
+    <div class="sec"><h4>Reach out</h4><textarea class="draft" id="draft">${esc(draft)}</textarea><div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn mint" onclick="navigator.clipboard.writeText($('#draft').value);this.textContent='Copied'">Copy message</button>${a.linkedin ? `<a class="btn vio" style="text-decoration:none" href="${esc(a.linkedin)}" target="_blank">Open LinkedIn</a>` : ""}</div></div>`;
+  $("#drawer").classList.add("open"); $("#drawer").scrollTop = 0;
+  loadPaths(a);
+}
+async function loadPaths(a) {
+  const q = S.data.query;
+  try {
+    const p = await api(`/api/paths?industry=${q.industry}&region=${q.region}&angel=${a.uuid}&me=${encodeURIComponent(S.me)}`);
+    if (!$("#paths")) return;
+    const first = a.name.split(" ")[0];
+    let html = "";
+    if (p.overlaps.length) html += p.overlaps.map((o) => o.connector
+      ? `<div class="path"><span class="node-p you">YOU</span><span class="arrow">─ ${esc(o.company)} ─▶</span><a href="#" class="node-p mid" data-conn="${esc(o.connector)}" data-via="${esc(o.via)}" data-url="">${esc(o.connector)} ✉</a><span class="arrow">─ ${esc(o.via)} ─▶</span><span class="node-p ang">${esc(first)}</span></div>`
+      : `<div class="path"><span class="node-p you">YOU</span><span class="arrow">─ both at ─▶</span><span class="node-p co">${esc(o.company)}</span><span class="arrow">◀─</span><span class="node-p ang">${esc(first)}</span></div>`).join("");
+    else if (S.me) html += `<div class="meta" style="margin-bottom:8px">${p.me ? `Found you on Dealroom (${p.me.companies} companies), but no direct overlap with ${esc(first)}.` : `Couldn't find "${esc(S.me)}" on Dealroom.`} Try the inner circle below: if you know any of them, that's your intro.</div>`;
+    else html += `<div class="meta" style="margin-bottom:8px">Add your name in the chat to find shared companies. Meanwhile, the people closest to ${esc(first)}:</div>`;
+    html += p.close.map((g) => `<div style="margin:8px 0"><div class="meta">${g.company.unicorn ? "🦄 " : ""}<b style="color:var(--gold)">${esc(g.company.name)}</b> · worked with ${esc(first)}</div>${g.people.map((x) => `<a class="person" href="#" data-conn="${esc(x.name)}" data-via="${esc(g.company.name)}" data-url="${esc(x.linkedin || x.dealroom_url || "")}">${esc(x.name)}<span style="color:var(--muted)">${x.title ? " · " + esc(x.title.slice(0, 28)) : ""}</span></a>`).join("")}</div>`).join("") || `<div class="meta">No team data for ${esc(first)}'s companies.</div>`;
+    html += `<div class="meta" style="margin-top:8px">LinkedIn mutuals aren't in any public API, so these come from the Dealroom people graph. Know one of them? Tap their name and I'll draft the intro ask.</div>
+      <div id="ask" style="display:none;margin-top:12px"><div class="quest" style="margin-bottom:8px">✉ Ask <b id="askWho"></b> for an intro to <u>${esc(a.name)}</u></div>
+      <input id="event" placeholder="Where you met them (e.g. Dealroom hackathon)" style="width:100%;background:#0b0920;color:var(--text);border:3px solid var(--ink);padding:8px;font:18px VT323;margin-bottom:8px">
+      <textarea class="draft" id="askMsg"></textarea><div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap"><button class="btn gold" id="askCopy">Copy ask</button><a class="btn vio" id="askOpen" target="_blank" style="text-decoration:none">Open profile</a></div></div>`;
+    $("#paths").innerHTML = html;
+    let cur = null;
+    const fill = () => {
+      if (!cur) return;
+      const ev = $("#event").value.trim() || "[event]", fa = a.name.split(" ")[0];
+      const why = a.why[0] ? a.why[0].replace(/^\w+ \(([^)]*)\) at/, "$1 at") : "";
+      $("#askMsg").value = `Hey ${cur.name.split(" ")[0]},\n\nWe met at ${ev}, hope you're well! Quick one: do you know ${a.name} well? I saw you worked together at ${cur.via}.\n\nI'm raising our ${q.stage.toLowerCase()} round for a ${q.industryName.toLowerCase()} startup selling into ${q.customerNames.join(" and ")}, and ${fa} would be a great person to talk to${why ? ` (${why})` : ""}. They seem like exactly the kind of angel who could open doors for us.\n\nWould you be up for a quick intro? Happy to send a short blurb you can forward.\n\nThanks!\n${S.me || "[your name]"}`;
+    };
+    $("#paths").querySelectorAll("[data-conn]").forEach((el) => el.onclick = (e) => {
+      e.preventDefault();
+      cur = { name: el.dataset.conn, via: el.dataset.via };
+      $("#ask").style.display = "block"; $("#askWho").textContent = cur.name;
+      const url = el.dataset.url || `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(cur.name)}`;
+      $("#askOpen").href = url; fill();
+      $("#ask").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+    $("#event").oninput = fill;
+    $("#askCopy").onclick = function () { navigator.clipboard.writeText($("#askMsg").value); this.textContent = "Copied"; };
+  } catch (err) { if ($("#paths")) $("#paths").innerHTML = `<div class="meta">Couldn't load paths: ${esc(err.message)}</div>`; }
+}
+function closeD() { $("#drawer").classList.remove("open"); }
+document.addEventListener("keydown", (e) => e.key === "Escape" && closeD());
+window.addEventListener("resize", () => S.data && graph());
+const pre = new URLSearchParams(location.search).get("ask");
+if (pre) { $("#text").value = pre; $("#me").value = new URLSearchParams(location.search).get("me") ?? ""; $("#compose").requestSubmit(); }
+</script>
+</body>
+</html>

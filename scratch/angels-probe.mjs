@@ -1,0 +1,13 @@
+import { get } from "../dealroom.mjs";
+const enc = encodeURIComponent;
+const filter = `and(hq_location[in_any]:93,taxonomy_id[in_any]:125403,taxonomy_id[nin_any]:1102801,growth_stage[nin_any]:412,standardized_round[in_any]:Pre-Seed|Seed,year[gte]:2024,is_vc_round[eq]:true)`;
+const r = await get(`/data/transactions?filter=${enc(filter)}&limit=100&sort=-date`);
+const ids = [...new Set(r.data.flatMap(x => (x.investors||[]).map(i => i.investor?.uuid)).filter(Boolean))];
+console.log("rounds", r.data.length, "investors", ids.length);
+console.log("sample investor entry", JSON.stringify(r.data[0].investors?.[0]).slice(0,400));
+const prof = (await get(`/data/investors?filter=${enc(`id[in_any]:${ids.slice(0,50).join("|")}`)}&view=summary&limit=50`)).data;
+const angels = prof.filter(p => p.investor?.types?.some(t => t.code==="angel") || p.type==="person");
+console.log("angels in first 50:", angels.map(a=>a.name));
+const a = angels[0];
+const car = await get(`/data/people/${a.uuid}/career?limit=20`);
+console.log("CAREER", JSON.stringify(car).slice(0,2500));

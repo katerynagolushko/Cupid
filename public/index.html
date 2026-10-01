@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cross the Pond · US investors who actually back UK founders</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='8' cy='16' r='6' fill='%23c4501a'/%3E%3Ccircle cx='24' cy='16' r='6' fill='%231f47c4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#results">Skip to results</a>
+
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28"><circle cx="7" cy="16" r="5" fill="var(--bridge)"/><circle cx="25" cy="16" r="5" fill="var(--us)"/><path d="M12 16 C16 9, 16 23, 20 16" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </span>
+        <span class="brand-name">Cross the Pond</span>
+        <span id="data-badge" class="badge badge-saved" hidden title="The live API was unavailable, so this view uses a saved snapshot">Saved data</span>
+      </div>
+      <p class="value-prop">Which <strong>US investors actually back companies like yours</strong>, evidenced by real Dealroom rounds, and which UK funds can walk you in.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <form id="controls" class="controls" autocomplete="off">
+      <div class="field field-company">
+        <label for="company-input">Your company <span class="hint">optional</span></label>
+        <div class="combo" role="combobox" aria-haspopup="listbox" aria-owns="company-list" aria-expanded="false" id="company-combo">
+          <input id="company-input" type="text" placeholder="Start typing, e.g. Droplet" aria-autocomplete="list" aria-controls="company-list">
+          <button type="button" id="company-clear" class="combo-clear" aria-label="Clear company" hidden>×</button>
+          <ul id="company-list" class="combo-list" role="listbox" hidden></ul>
+        </div>
+      </div>
+      <div class="field">
+        <label for="industry">Industry</label>
+        <select id="industry"><option>Loading…</option></select>
+      </div>
+      <fieldset class="field field-stages">
+        <legend>Stage</legend>
+        <div id="stages" class="chips" role="group"></div>
+      </fieldset>
+      <div class="field">
+        <label for="region">Company HQ</label>
+        <select id="region"><option>Loading…</option></select>
+      </div>
+      <div class="field field-since">
+        <label for="since">Since</label>
+        <input id="since" type="number" min="2015" max="2026" step="1" value="2024">
+      </div>
+      <div class="field field-vc">
+        <label for="vc-only">VCs only</label>
+        <input id="vc-only" type="checkbox" title="Hide accelerators like Techstars, Y Combinator and Plug and Play">
+      </div>
+      <button id="go" class="btn-primary" type="submit">Find US investors</button>
+    </form>
+
+    <section id="summary" class="summary" aria-live="polite"></section>
+
+    <section id="results" class="results" tabindex="-1">
+      <div class="col col-list">
+        <div class="col-head">
+          <h2>US investors, ranked by evidence</h2>
+          <span id="list-count" class="muted"></span>
+        </div>
+        <ol id="investor-list" class="investor-list"></ol>
+      </div>
+      <div class="col col-graph">
+        <div class="col-head">
+          <h2>Who invests alongside whom</h2>
+          <div class="legend" aria-label="Graph legend">
+            <span><i class="dot dot-us"></i>US investor</span>
+            <span><i class="dot dot-bridge"></i>UK/EU bridge</span>
+            <span><i class="dot dot-company"></i>Company</span>
+            <span><i class="line line-lead"></i>Led round</span>
+            <span><i class="line line-follow"></i>Joined</span>
+          </div>
+        </div>
+        <div id="graph" class="graph-box"></div>
+        <p class="muted small graph-note">Hover a node to trace its deals. Click a US investor to open the evidence.</p>
+      </div>
+    </section>
+
+    <section class="bridges-section">
+      <div class="col-head">
+        <h2>Bridge investors: your warm path to US money</h2>
+        <span class="muted">UK/EU funds that repeatedly co-invest with US funds in this cohort</span>
+      </div>
+      <div id="bridges"></div>
+    </section>
+
+    <section class="caveats-section">
+      <h2 class="small-head">Caveats and method</h2>
+      <ul id="caveats" class="caveats"></ul>
+    </section>
+  </main>
+
+  <footer class="wrap footer muted small">Data: Dealroom API. Every deal links to its Dealroom record and source where available.</footer>
+
+  <div id="drawer-backdrop" class="drawer-backdrop" hidden></div>
+  <aside id="drawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+    <div class="drawer-inner" id="drawer-body"></div>
+  </aside>
+
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

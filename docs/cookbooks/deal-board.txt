@@ -1,0 +1,61 @@
+Deal Board: demo and build guide | Dealroom
+Skip to content
+Product
+Reports
+Resources
+Pricing
+Login
+Book a demo
+Product
+Reports
+Resources
+Pricing
+Book a demo
+← All demos
+Deal Board
+Keep your investment pipeline in one place
+Move companies through your stages, inspect funding and team details, and keep notes and follow-ups alongside them.
+Open demo
+↗
+Copy build prompt
+What this demo does
+Track a company from initial interest through meetings and diligence without setting up a shared CRM.
+The data
+Fourteen saved industrial-AI company profiles. Eleven appear on the starter board. Example stages, notes and tasks are illustrative, not real investment decisions.
+What it does not tell you
+The public demo adds companies from the saved collection. Live Dealroom search requires your own app and API access. Notes stay in this browser; reminders are an in-app due list, not email or push alerts.
+Build your own
+Copy this into a coding assistant that can build apps. Adapt the brief before you start. You will need your own Dealroom API access for live data; never paste a secret into the prompt.
+Read the build prompt
+Build Deal Board, a personal investment pipeline powered by Dealroom. Use five renamable columns: Watching, Meet, Evaluating, Due diligence and Invested. Add drag-and-drop and a keyboard-accessible stage selector.
+Let me search Dealroom by company name or website, explicitly select the right match, and enrich a card with profile, funding rounds, investors and recorded team. Show the retrieval date and partial coverage. Avoid duplicate companies by UUID.
+Each card has my own notes and one next action with a due date. Provide a follow-up list, archive and restore, and manual refresh of company facts that never overwrites my notes or stage. Save the board locally in my browser and support validated JSON backup and restore with confirmation before replacement. Clearly separate illustrative starter notes from Dealroom facts. Do not connect a CRM, email anyone or claim background alerts.
+First read the Dealroom Premium API documentation at https://docs.dealroom.co/docs/premium-api. Discover supported filters and resolve taxonomy IDs rather than guessing them. Check current data availability before committing to a feature.
+Use my own Dealroom Programmatic (M2M) credentials through a server-only environment file excluded from Git. Never ask me to paste a secret into chat or embed credentials in frontend code. Implement the documented OAuth2 client-credentials flow, cache tokens, refresh once on expiry, and send Authorization and X-Client-Id. Respect access limits, pagination and Retry-After. Do not silently treat a failed or restricted response as an empty dataset.
+Build a working responsive web app, not a mockup. Start with a bounded cohort and cache responses with retrieval dates. Show currency, sources, missing values and partial coverage. Keep a clearly labelled saved-data mode for a public demo. Include loading, empty and error states, accessible keyboard alternatives, tests for the data joins and a README explaining setup. Do not publish, send messages or write to Dealroom without asking me.
+Reference demo: https://dealroom.co/api/showcase/deal-board/
+Build guide: https://dealroom.co/cookbooks/deal-board/
+Copy build prompt
+How it works
+These are the data joins behind the app. Confirm current routes, filters and response shapes in the
+API documentation
+before implementing them.
+Resolve and select a company
+Search by name or domain. Let the user choose the correct result before enrichment. Use the company UUID as the stable card identity.
+GET /data/search
+Enrich the card
+Load company facts, funding records and team members. Cache the normalized profile with its retrieval date and coverage status.
+GET /data/companies/{id}
+GET /data/companies/{id}/funding-rounds
+GET /data/companies/{id}/team
+Separate personal work from API facts
+Keep stage, notes and next action in a separate object keyed by UUID. Refreshing a profile must not reset those fields.
+Persist and recover the board
+Use browser-local storage for the personal demo. Validate backups and ask before replacing a board. A shared version needs authentication, server storage and access controls.
+Connect safely
+Use Programmatic (M2M) credentials in a server-only environment file excluded from Git. The documented OAuth flow returns a token; requests need both Authorization and X-Client-Id. Cache responses and tokens, handle pagination and rate limits, and display retrieval dates and incomplete coverage.
+A public version can serve a reviewed saved snapshot. A live shared workspace also needs authentication, storage and controls for who can see personal notes or export records.
+Read the API documentation →
+Copy the build prompt
+Your browser could not copy automatically. Select and copy the text below.
+Close

@@ -1,0 +1,1575 @@
+{
+  "query": {
+    "industry": {
+      "id": 125403,
+      "name": "Health"
+    },
+    "stages": [
+      "Pre-Seed",
+      "Seed"
+    ],
+    "region": {
+      "id": 93,
+      "name": "United Kingdom"
+    },
+    "since": 2024,
+    "company": null
+  },
+  "method": "Funding rounds (VC rounds only, is_vc_round) for companies HQ'd in United Kingdom, industry Health, standardised stage in Pre-Seed, Seed, year ≥ 2024; investors on those rounds; filtered to investors HQ'd in the United States.",
+  "retrieved_at": "2026-10-01T16:05:00Z",
+  "from_cache": true,
+  "stats": {
+    "rounds": 734,
+    "investors": 629,
+    "us_investors": 109,
+    "rounds_with_us_investor": 150,
+    "us_share_of_rounds": 0.2
+  },
+  "benchmark": {
+    "n_amount": 680,
+    "median_amount": 1584001,
+    "p25_amount": 700000,
+    "p75_amount": 3000000,
+    "n_valuation": 600,
+    "median_valuation": 7900000
+  },
+  "investors": [
+    {
+      "uuid": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+      "name": "Techstars",
+      "dealroom_url": "https://app.dealroom.co/investors/techstars",
+      "domain": "techstars.com",
+      "image": null,
+      "types": [
+        "accelerator"
+      ],
+      "hq_city": "Boulder",
+      "score": 95,
+      "score_breakdown": {
+        "segment_deals": 40,
+        "leads": 20,
+        "recency": 17,
+        "stage_fit": 18
+      },
+      "segment_deals": 10,
+      "leads": 3,
+      "last_deal": "2026-07",
+      "preferred_round": "SEED",
+      "total_investments": 5200,
+      "deal_size": {
+        "min": 20000,
+        "max": 120000
+      },
+      "about": "Global accelerator and pre-seed investor running programmes in over 30 cities, including London.",
+      "deals": [
+        {
+          "company": {
+            "uuid": "133ca90b-98b9-404b-a9f1-1d1c1557bb16",
+            "name": "Rowan Therapeutics",
+            "dealroom_url": "https://app.dealroom.co/companies/rowan_therapeutics"
+          },
+          "date": "2026-07",
+          "round": "Seed",
+          "amount": 2100000,
+          "valuation": 8400000,
+          "is_lead": false,
+          "source_url": null,
+          "co_investors": [
+            "Y Combinator",
+            "Seedcamp"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "dbeb91ff-ca10-4df9-abb9-f86c630849b0",
+            "name": "Northlight Health",
+            "dealroom_url": "https://app.dealroom.co/companies/northlight_health"
+          },
+          "date": "2026-06",
+          "round": "Pre-Seed",
+          "amount": 600000,
+          "valuation": null,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/northlight_health-raises-pre-seed",
+          "co_investors": [
+            "Plug and Play"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "472ca4d8-5462-42e3-a8a7-ccf3d3ece505",
+            "name": "Droplet Scientific",
+            "dealroom_url": "https://app.dealroom.co/companies/droplet_scientific"
+          },
+          "date": "2025-11",
+          "round": "Seed",
+          "amount": 2400000,
+          "valuation": 9600000,
+          "is_lead": false,
+          "source_url": null,
+          "co_investors": [
+            "Seedcamp",
+            "SOSV"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "0f253cb8-719c-4c88-a8ce-eb68f3cdfbe5",
+            "name": "Halo Sleep",
+            "dealroom_url": "https://app.dealroom.co/companies/halo_sleep"
+          },
+          "date": "2025-07",
+          "round": "Pre-Seed",
+          "amount": 400000,
+          "valuation": null,
+          "is_lead": true,
+          "source_url": "https://www.uktech.news/healthtech/halo_sleep-raises-pre-seed",
+          "co_investors": [
+            "Plug and Play"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "6606894e-9e22-4914-a68d-4e53c31ce767",
+            "name": "Neurotype",
+            "dealroom_url": "https://app.dealroom.co/companies/neurotype"
+          },
+          "date": "2025-06",
+          "round": "Pre-Seed",
+          "amount": 650000,
+          "valuation": null,
+          "is_lead": false,
+          "source_url": null,
+          "co_investors": [
+            "Ada Ventures"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "bad78b55-7abd-4f83-a840-82a033d1ea01",
+            "name": "Elmstone AI",
+            "dealroom_url": "https://app.dealroom.co/companies/elmstone_ai"
+          },
+          "date": "2025-05",
+          "round": "Pre-Seed",
+          "amount": 450000,
+          "valuation": null,
+          "is_lead": true,
+          "source_url": "https://www.uktech.news/healthtech/elmstone_ai-raises-pre-seed",
+          "co_investors": [
+            "SOSV"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "4b5ed497-9da3-4b56-ad7f-dabcb2647f0b",
+            "name": "Pelican Diagnostics",
+            "dealroom_url": "https://app.dealroom.co/companies/pelican_diagnostics"
+          },
+          "date": "2025-04",
+          "round": "Seed",
+          "amount": 1600000,
+          "valuation": 6400000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/pelican_diagnostics-raises-seed",
+          "co_investors": [
+            "Seedcamp",
+            "LDV Capital"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "b13af5ea-c947-442d-a240-f8e3777a3b41",
+            "name": "Cobalt Care",
+            "dealroom_url": "https://app.dealroom.co/companies/cobalt_care"
+          },
+          "date": "2024-12",
+          "round": "Seed",
+          "amount": 1200000,
+          "valuation": 4800000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/cobalt_care-raises-seed",
+          "co_investors": [
+            "Seedcamp"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "2ac66476-687b-4094-a8aa-12a9619d9a2b",
+            "name": "Nuvia Care",
+            "dealroom_url": "https://app.dealroom.co/companies/nuvia_care"
+          },
+          "date": "2024-09",
+          "round": "Seed",
+          "amount": 1800000,
+          "valuation": 7200000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/nuvia_care-raises-seed",
+          "co_investors": [
+            "Seedcamp",
+            "Plug and Play"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "5af86a3e-8a94-43e8-af57-41a61a86b6c3",
+            "name": "Aurum Diagnostics",
+            "dealroom_url": "https://app.dealroom.co/companies/aurum_diagnostics"
+          },
+          "date": "2024-04",
+          "round": "Pre-Seed",
+          "amount": 500000,
+          "valuation": null,
+          "is_lead": true,
+          "source_url": "https://www.uktech.news/healthtech/aurum_diagnostics-raises-pre-seed",
+          "co_investors": []
+        }
+      ],
+      "bridges": [
+        {
+          "uuid": "36322b83-b97b-496c-abef-131d8c95e348",
+          "name": "Seedcamp",
+          "shared_deals": 5
+        },
+        {
+          "uuid": "6419c71a-54f4-4fbb-a494-bf5d48b919fb",
+          "name": "Ada Ventures",
+          "shared_deals": 1
+        }
+      ]
+    },
+    {
+      "uuid": "674c8eb3-5af8-40bc-a931-e6ca7794e0d1",
+      "name": "Y Combinator",
+      "dealroom_url": "https://app.dealroom.co/investors/y_combinator",
+      "domain": "ycombinator.com",
+      "image": null,
+      "types": [
+        "accelerator"
+      ],
+      "hq_city": "San Francisco",
+      "score": 67,
+      "score_breakdown": {
+        "segment_deals": 24,
+        "leads": 7,
+        "recency": 18,
+        "stage_fit": 18
+      },
+      "segment_deals": 6,
+      "leads": 1,
+      "last_deal": "2026-08",
+      "preferred_round": "SEED",
+      "total_investments": 5000,
+      "deal_size": {
+        "min": 125000,
+        "max": 500000
+      },
+      "about": "Seed accelerator that invests in a large number of startups twice a year.",
+      "deals": [
+        {
+          "company": {
+            "uuid": "b512b264-a00b-4820-a5f5-4056db9c1e95",
+            "name": "Fuse",
+            "dealroom_url": "https://app.dealroom.co/companies/fuse"
+          },
+          "date": "2026-08",
+          "round": "Seed",
+          "amount": 2000000,
+          "valuation": 8000000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/fuse-raises-seed",
+          "co_investors": [
+            "Kindred Capital",
+            "Seedcamp"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "133ca90b-98b9-404b-a9f1-1d1c1557bb16",
+            "name": "Rowan Therapeutics",
+            "dealroom_url": "https://app.dealroom.co/companies/rowan_therapeutics"
+          },
+          "date": "2026-07",
+          "round": "Seed",
+          "amount": 2100000,
+          "valuation": 8400000,
+          "is_lead": false,
+          "source_url": null,
+          "co_investors": [
+            "Techstars",
+            "Seedcamp"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "17fd7c97-b383-4426-a4ca-b39b28a09c65",
+            "name": "Tidewell",
+            "dealroom_url": "https://app.dealroom.co/companies/tidewell"
+          },
+          "date": "2026-01",
+          "round": "Seed",
+          "amount": 1500000,
+          "valuation": 6000000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/tidewell-raises-seed",
+          "co_investors": [
+            "Seedcamp",
+            "Kindred Capital"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "c0a5d1ff-8bc0-4bb8-ace9-b3d9b4ab907e",
+            "name": "Wren Health",
+            "dealroom_url": "https://app.dealroom.co/companies/wren_health"
+          },
+          "date": "2025-12",
+          "round": "Pre-Seed",
+          "amount": 800000,
+          "valuation": null,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/wren_health-raises-pre-seed",
+          "co_investors": [
+            "Ada Ventures"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "39d71da3-f846-460e-acbc-4d2db0984707",
+            "name": "Brightwell Therapeutics",
+            "dealroom_url": "https://app.dealroom.co/companies/brightwell_therapeutics"
+          },
+          "date": "2025-09",
+          "round": "Seed",
+          "amount": 4200000,
+          "valuation": 16800000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/brightwell_therapeutics-raises-seed",
+          "co_investors": [
+            "Octopus Ventures",
+            "OMX Ventures"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "d3d0b833-52ab-46b1-a49b-f4ac951b67ef",
+            "name": "Ostia Health",
+            "dealroom_url": "https://app.dealroom.co/companies/ostia_health"
+          },
+          "date": "2024-11",
+          "round": "Pre-Seed",
+          "amount": 750000,
+          "valuation": null,
+          "is_lead": true,
+          "source_url": null,
+          "co_investors": [
+            "Ada Ventures"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "uuid": "36322b83-b97b-496c-abef-131d8c95e348",
+          "name": "Seedcamp",
+          "shared_deals": 3
+        },
+        {
+          "uuid": "76e25453-55db-4574-ac18-a77b143291f3",
+          "name": "Kindred Capital",
+          "shared_deals": 2
+        },
+        {
+          "uuid": "6419c71a-54f4-4fbb-a494-bf5d48b919fb",
+          "name": "Ada Ventures",
+          "shared_deals": 2
+        },
+        {
+          "uuid": "203d7fa8-c136-41b3-affb-4b01399621b9",
+          "name": "Octopus Ventures",
+          "shared_deals": 1
+        }
+      ]
+    },
+    {
+      "uuid": "bb1d136f-93b7-4d3f-a1ac-91babfc0ae8a",
+      "name": "SOSV",
+      "dealroom_url": "https://app.dealroom.co/investors/sosv",
+      "domain": "sosv.com",
+      "image": null,
+      "types": [
+        "venture capital",
+        "accelerator"
+      ],
+      "hq_city": "Princeton",
+      "score": 65,
+      "score_breakdown": {
+        "segment_deals": 24,
+        "leads": 14,
+        "recency": 9,
+        "stage_fit": 18
+      },
+      "segment_deals": 6,
+      "leads": 2,
+      "last_deal": "2025-11",
+      "preferred_round": "SEED",
+      "total_investments": 1900,
+      "deal_size": {
+        "min": 150000,
+        "max": 3000000
+      },
+      "about": "Multi-stage VC for deep tech and human and planetary health, running HAX and IndieBio.",
+      "deals": [
+        {
+          "company": {
+            "uuid": "472ca4d8-5462-42e3-a8a7-ccf3d3ece505",
+            "name": "Droplet Scientific",
+            "dealroom_url": "https://app.dealroom.co/companies/droplet_scientific"
+          },
+          "date": "2025-11",
+          "round": "Seed",
+          "amount": 2400000,
+          "valuation": 9600000,
+          "is_lead": false,
+          "source_url": null,
+          "co_investors": [
+            "Seedcamp",
+            "Techstars"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "b1b04d80-c4d4-4a96-a84d-8d2a8b6064a6",
+            "name": "Sable Genomics",
+            "dealroom_url": "https://app.dealroom.co/companies/sable_genomics"
+          },
+          "date": "2025-10",
+          "round": "Seed",
+          "amount": 3500000,
+          "valuation": 14000000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/sable_genomics-raises-seed",
+          "co_investors": [
+            "OMX Ventures",
+            "Octopus Ventures"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "bad78b55-7abd-4f83-a840-82a033d1ea01",
+            "name": "Elmstone AI",
+            "dealroom_url": "https://app.dealroom.co/companies/elmstone_ai"
+          },
+          "date": "2025-05",
+          "round": "Pre-Seed",
+          "amount": 450000,
+          "valuation": null,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/elmstone_ai-raises-pre-seed",
+          "co_investors": [
+            "Techstars"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "e300413a-8644-4ce2-abe1-8d91460fb024",
+            "name": "Fernhill Medical",
+            "dealroom_url": "https://app.dealroom.co/companies/fernhill_medical"
+          },
+          "date": "2025-03",
+          "round": "Pre-Seed",
+          "amount": 550000,
+          "valuation": null,
+          "is_lead": true,
+          "source_url": "https://www.uktech.news/healthtech/fernhill_medical-raises-pre-seed",
+          "co_investors": []
+        },
+        {
+          "company": {
+            "uuid": "84644299-8821-4754-aa83-6d33dcae55f0",
+            "name": "Calla Lab",
+            "dealroom_url": "https://app.dealroom.co/companies/calla_lab"
+          },
+          "date": "2025-02",
+          "round": "Seed",
+          "amount": 2500000,
+          "valuation": 10000000,
+          "is_lead": true,
+          "source_url": null,
+          "co_investors": [
+            "Kindred Capital"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "bbf106b6-da8a-4cfa-aa76-25476a327b25",
+            "name": "Quanta Bio",
+            "dealroom_url": "https://app.dealroom.co/companies/quanta_bio"
+          },
+          "date": "2024-06",
+          "round": "Seed",
+          "amount": 2900000,
+          "valuation": 11600000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/quanta_bio-raises-seed",
+          "co_investors": [
+            "Octopus Ventures"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "uuid": "203d7fa8-c136-41b3-affb-4b01399621b9",
+          "name": "Octopus Ventures",
+          "shared_deals": 2
+        },
+        {
+          "uuid": "36322b83-b97b-496c-abef-131d8c95e348",
+          "name": "Seedcamp",
+          "shared_deals": 1
+        },
+        {
+          "uuid": "76e25453-55db-4574-ac18-a77b143291f3",
+          "name": "Kindred Capital",
+          "shared_deals": 1
+        }
+      ]
+    },
+    {
+      "uuid": "21aa3264-73e7-4327-afae-dd46e6ecd228",
+      "name": "Plug and Play",
+      "dealroom_url": "https://app.dealroom.co/investors/plug_and_play",
+      "domain": "plugandplaytechcenter.com",
+      "image": null,
+      "types": [
+        "accelerator",
+        "venture capital"
+      ],
+      "hq_city": "Sunnyvale",
+      "score": 62,
+      "score_breakdown": {
+        "segment_deals": 28,
+        "leads": 0,
+        "recency": 16,
+        "stage_fit": 18
+      },
+      "segment_deals": 7,
+      "leads": 0,
+      "last_deal": "2026-06",
+      "preferred_round": "SEED",
+      "total_investments": 2300,
+      "deal_size": {
+        "min": 25000,
+        "max": 500000
+      },
+      "about": "Innovation platform and early-stage investor connecting startups with corporates.",
+      "deals": [
+        {
+          "company": {
+            "uuid": "dbeb91ff-ca10-4df9-abb9-f86c630849b0",
+            "name": "Northlight Health",
+            "dealroom_url": "https://app.dealroom.co/companies/northlight_health"
+          },
+          "date": "2026-06",
+          "round": "Pre-Seed",
+          "amount": 600000,
+          "valuation": null,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/northlight_health-raises-pre-seed",
+          "co_investors": [
+            "Techstars"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "1f00bbdf-5343-4fe5-a4c5-fc3c1a8a1b34",
+            "name": "Aster Health",
+            "dealroom_url": "https://app.dealroom.co/companies/aster_health"
+          },
+          "date": "2026-04",
+          "round": "Seed",
+          "amount": 1400000,
+          "valuation": 5600000,
+          "is_lead": false,
+          "source_url": null,
+          "co_investors": [
+            "Kindred Capital"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "dfbfaa2d-a209-4a01-ac14-c864cea99f04",
+            "name": "Hesta Health",
+            "dealroom_url": "https://app.dealroom.co/companies/hesta_health"
+          },
+          "date": "2026-03",
+          "round": "Seed",
+          "amount": 3100000,
+          "valuation": 12400000,
+          "is_lead": false,
+          "source_url": null,
+          "co_investors": [
+            "Octopus Ventures",
+            "Ascension Ventures"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "0f253cb8-719c-4c88-a8ce-eb68f3cdfbe5",
+            "name": "Halo Sleep",
+            "dealroom_url": "https://app.dealroom.co/companies/halo_sleep"
+          },
+          "date": "2025-07",
+          "round": "Pre-Seed",
+          "amount": 400000,
+          "valuation": null,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/halo_sleep-raises-pre-seed",
+          "co_investors": [
+            "Techstars"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "2ac66476-687b-4094-a8aa-12a9619d9a2b",
+            "name": "Nuvia Care",
+            "dealroom_url": "https://app.dealroom.co/companies/nuvia_care"
+          },
+          "date": "2024-09",
+          "round": "Seed",
+          "amount": 1800000,
+          "valuation": 7200000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/nuvia_care-raises-seed",
+          "co_investors": [
+            "Seedcamp",
+            "Techstars"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "e8e20025-a9c0-4398-a2ea-8d59560f2945",
+            "name": "Kestrel Diagnostics",
+            "dealroom_url": "https://app.dealroom.co/companies/kestrel_diagnostics"
+          },
+          "date": "2024-08",
+          "round": "Seed",
+          "amount": 1900000,
+          "valuation": 7600000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/kestrel_diagnostics-raises-seed",
+          "co_investors": [
+            "Ascension Ventures",
+            "Octopus Ventures"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "411f2e26-183b-49ca-a1fd-9f4cae67620b",
+            "name": "Verity Clinical",
+            "dealroom_url": "https://app.dealroom.co/companies/verity_clinical"
+          },
+          "date": "2024-03",
+          "round": "Seed",
+          "amount": 2200000,
+          "valuation": 8800000,
+          "is_lead": false,
+          "source_url": null,
+          "co_investors": [
+            "Ada Ventures",
+            "Ascension Ventures"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "uuid": "203d7fa8-c136-41b3-affb-4b01399621b9",
+          "name": "Octopus Ventures",
+          "shared_deals": 2
+        },
+        {
+          "uuid": "76e25453-55db-4574-ac18-a77b143291f3",
+          "name": "Kindred Capital",
+          "shared_deals": 1
+        },
+        {
+          "uuid": "36322b83-b97b-496c-abef-131d8c95e348",
+          "name": "Seedcamp",
+          "shared_deals": 1
+        },
+        {
+          "uuid": "6419c71a-54f4-4fbb-a494-bf5d48b919fb",
+          "name": "Ada Ventures",
+          "shared_deals": 1
+        }
+      ]
+    },
+    {
+      "uuid": "5d952b63-2112-493d-aced-14ce6769bb4b",
+      "name": "Zetta Venture Partners",
+      "dealroom_url": "https://app.dealroom.co/investors/zetta_venture_partners",
+      "domain": "zettavp.com",
+      "image": null,
+      "types": [
+        "venture capital"
+      ],
+      "hq_city": "San Francisco",
+      "score": 48,
+      "score_breakdown": {
+        "segment_deals": 8,
+        "leads": 7,
+        "recency": 15,
+        "stage_fit": 18
+      },
+      "segment_deals": 2,
+      "leads": 1,
+      "last_deal": "2026-05",
+      "preferred_round": "SEED",
+      "total_investments": 90,
+      "deal_size": {
+        "min": 500000,
+        "max": 4000000
+      },
+      "about": "Seed fund for AI-first B2B companies.",
+      "deals": [
+        {
+          "company": {
+            "uuid": "9f30fc06-68a8-42db-a525-d40abd340181",
+            "name": "Mira Neuro",
+            "dealroom_url": "https://app.dealroom.co/companies/mira_neuro"
+          },
+          "date": "2026-05",
+          "round": "Pre-Seed",
+          "amount": 900000,
+          "valuation": null,
+          "is_lead": true,
+          "source_url": "https://www.uktech.news/healthtech/mira_neuro-raises-pre-seed",
+          "co_investors": [
+            "Kindred Capital"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "e89b4979-a68f-434e-a0dc-aaa201df07b0",
+            "name": "Larkspur Bio",
+            "dealroom_url": "https://app.dealroom.co/companies/larkspur_bio"
+          },
+          "date": "2026-02",
+          "round": "Seed",
+          "amount": 2700000,
+          "valuation": 10800000,
+          "is_lead": false,
+          "source_url": null,
+          "co_investors": [
+            "LDV Capital",
+            "Kindred Capital"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "uuid": "76e25453-55db-4574-ac18-a77b143291f3",
+          "name": "Kindred Capital",
+          "shared_deals": 2
+        }
+      ]
+    },
+    {
+      "uuid": "1373daf5-21e2-4760-a88f-87911260d2c3",
+      "name": "LDV Capital",
+      "dealroom_url": "https://app.dealroom.co/investors/ldv_capital",
+      "domain": "ldv.co",
+      "image": null,
+      "types": [
+        "venture capital"
+      ],
+      "hq_city": "New York",
+      "score": 45,
+      "score_breakdown": {
+        "segment_deals": 8,
+        "leads": 7,
+        "recency": 12,
+        "stage_fit": 18
+      },
+      "segment_deals": 2,
+      "leads": 1,
+      "last_deal": "2026-02",
+      "preferred_round": "PRE-SEED",
+      "total_investments": 80,
+      "deal_size": {
+        "min": 250000,
+        "max": 2000000
+      },
+      "about": "Early-stage fund investing in visual technology and AI.",
+      "deals": [
+        {
+          "company": {
+            "uuid": "e89b4979-a68f-434e-a0dc-aaa201df07b0",
+            "name": "Larkspur Bio",
+            "dealroom_url": "https://app.dealroom.co/companies/larkspur_bio"
+          },
+          "date": "2026-02",
+          "round": "Seed",
+          "amount": 2700000,
+          "valuation": 10800000,
+          "is_lead": true,
+          "source_url": null,
+          "co_investors": [
+            "Zetta Venture Partners",
+            "Kindred Capital"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "4b5ed497-9da3-4b56-ad7f-dabcb2647f0b",
+            "name": "Pelican Diagnostics",
+            "dealroom_url": "https://app.dealroom.co/companies/pelican_diagnostics"
+          },
+          "date": "2025-04",
+          "round": "Seed",
+          "amount": 1600000,
+          "valuation": 6400000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/pelican_diagnostics-raises-seed",
+          "co_investors": [
+            "Techstars",
+            "Seedcamp"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "uuid": "76e25453-55db-4574-ac18-a77b143291f3",
+          "name": "Kindred Capital",
+          "shared_deals": 1
+        },
+        {
+          "uuid": "36322b83-b97b-496c-abef-131d8c95e348",
+          "name": "Seedcamp",
+          "shared_deals": 1
+        }
+      ]
+    },
+    {
+      "uuid": "e7e81cc8-2c71-4712-abdd-71adad8b1e5a",
+      "name": "Ascension Ventures",
+      "dealroom_url": "https://app.dealroom.co/investors/ascension_ventures",
+      "domain": "ascensionventures.org",
+      "image": null,
+      "types": [
+        "venture capital"
+      ],
+      "hq_city": "St. Louis",
+      "score": 41,
+      "score_breakdown": {
+        "segment_deals": 12,
+        "leads": 7,
+        "recency": 13,
+        "stage_fit": 9
+      },
+      "segment_deals": 3,
+      "leads": 1,
+      "last_deal": "2026-03",
+      "preferred_round": "SERIES A",
+      "total_investments": 140,
+      "deal_size": {
+        "min": 1000000,
+        "max": 10000000
+      },
+      "about": "Healthcare-focused venture firm backed by health systems.",
+      "deals": [
+        {
+          "company": {
+            "uuid": "dfbfaa2d-a209-4a01-ac14-c864cea99f04",
+            "name": "Hesta Health",
+            "dealroom_url": "https://app.dealroom.co/companies/hesta_health"
+          },
+          "date": "2026-03",
+          "round": "Seed",
+          "amount": 3100000,
+          "valuation": 12400000,
+          "is_lead": false,
+          "source_url": null,
+          "co_investors": [
+            "Octopus Ventures",
+            "Plug and Play"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "e8e20025-a9c0-4398-a2ea-8d59560f2945",
+            "name": "Kestrel Diagnostics",
+            "dealroom_url": "https://app.dealroom.co/companies/kestrel_diagnostics"
+          },
+          "date": "2024-08",
+          "round": "Seed",
+          "amount": 1900000,
+          "valuation": 7600000,
+          "is_lead": true,
+          "source_url": "https://www.uktech.news/healthtech/kestrel_diagnostics-raises-seed",
+          "co_investors": [
+            "Plug and Play",
+            "Octopus Ventures"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "411f2e26-183b-49ca-a1fd-9f4cae67620b",
+            "name": "Verity Clinical",
+            "dealroom_url": "https://app.dealroom.co/companies/verity_clinical"
+          },
+          "date": "2024-03",
+          "round": "Seed",
+          "amount": 2200000,
+          "valuation": 8800000,
+          "is_lead": false,
+          "source_url": null,
+          "co_investors": [
+            "Plug and Play",
+            "Ada Ventures"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "uuid": "203d7fa8-c136-41b3-affb-4b01399621b9",
+          "name": "Octopus Ventures",
+          "shared_deals": 2
+        },
+        {
+          "uuid": "6419c71a-54f4-4fbb-a494-bf5d48b919fb",
+          "name": "Ada Ventures",
+          "shared_deals": 1
+        }
+      ]
+    },
+    {
+      "uuid": "1686161c-4948-4dd5-a330-3324b2c7fb56",
+      "name": "OMX Ventures",
+      "dealroom_url": "https://app.dealroom.co/investors/omx_ventures",
+      "domain": "omxventures.com",
+      "image": null,
+      "types": [
+        "venture capital"
+      ],
+      "hq_city": "Boston",
+      "score": 41,
+      "score_breakdown": {
+        "segment_deals": 8,
+        "leads": 7,
+        "recency": 8,
+        "stage_fit": 18
+      },
+      "segment_deals": 2,
+      "leads": 1,
+      "last_deal": "2025-10",
+      "preferred_round": "SEED",
+      "total_investments": 60,
+      "deal_size": {
+        "min": 1000000,
+        "max": 8000000
+      },
+      "about": null,
+      "deals": [
+        {
+          "company": {
+            "uuid": "b1b04d80-c4d4-4a96-a84d-8d2a8b6064a6",
+            "name": "Sable Genomics",
+            "dealroom_url": "https://app.dealroom.co/companies/sable_genomics"
+          },
+          "date": "2025-10",
+          "round": "Seed",
+          "amount": 3500000,
+          "valuation": 14000000,
+          "is_lead": true,
+          "source_url": "https://www.uktech.news/healthtech/sable_genomics-raises-seed",
+          "co_investors": [
+            "SOSV",
+            "Octopus Ventures"
+          ]
+        },
+        {
+          "company": {
+            "uuid": "39d71da3-f846-460e-acbc-4d2db0984707",
+            "name": "Brightwell Therapeutics",
+            "dealroom_url": "https://app.dealroom.co/companies/brightwell_therapeutics"
+          },
+          "date": "2025-09",
+          "round": "Seed",
+          "amount": 4200000,
+          "valuation": 16800000,
+          "is_lead": false,
+          "source_url": "https://www.uktech.news/healthtech/brightwell_therapeutics-raises-seed",
+          "co_investors": [
+            "Octopus Ventures",
+            "Y Combinator"
+          ]
+        }
+      ],
+      "bridges": [
+        {
+          "uuid": "203d7fa8-c136-41b3-affb-4b01399621b9",
+          "name": "Octopus Ventures",
+          "shared_deals": 2
+        }
+      ]
+    }
+  ],
+  "bridges": [
+    {
+      "uuid": "36322b83-b97b-496c-abef-131d8c95e348",
+      "name": "Seedcamp",
+      "hq_country": "United Kingdom",
+      "dealroom_url": "https://app.dealroom.co/investors/seedcamp",
+      "shared_deals_with_us": 7,
+      "us_partners": [
+        "Techstars",
+        "Y Combinator",
+        "SOSV",
+        "Plug and Play",
+        "LDV Capital"
+      ],
+      "deals_led": 5
+    },
+    {
+      "uuid": "76e25453-55db-4574-ac18-a77b143291f3",
+      "name": "Kindred Capital",
+      "hq_country": "United Kingdom",
+      "dealroom_url": "https://app.dealroom.co/investors/kindred_capital",
+      "shared_deals_with_us": 6,
+      "us_partners": [
+        "Y Combinator",
+        "Zetta Venture Partners",
+        "SOSV",
+        "LDV Capital",
+        "Plug and Play"
+      ],
+      "deals_led": 3
+    },
+    {
+      "uuid": "203d7fa8-c136-41b3-affb-4b01399621b9",
+      "name": "Octopus Ventures",
+      "hq_country": "United Kingdom",
+      "dealroom_url": "https://app.dealroom.co/investors/octopus_ventures",
+      "shared_deals_with_us": 5,
+      "us_partners": [
+        "Plug and Play",
+        "Ascension Ventures",
+        "OMX Ventures",
+        "SOSV",
+        "Y Combinator"
+      ],
+      "deals_led": 3
+    },
+    {
+      "uuid": "6419c71a-54f4-4fbb-a494-bf5d48b919fb",
+      "name": "Ada Ventures",
+      "hq_country": "United Kingdom",
+      "dealroom_url": "https://app.dealroom.co/investors/ada_ventures",
+      "shared_deals_with_us": 4,
+      "us_partners": [
+        "Y Combinator",
+        "Techstars",
+        "Plug and Play",
+        "Ascension Ventures"
+      ],
+      "deals_led": 2
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+        "label": "Techstars",
+        "kind": "us_investor"
+      },
+      {
+        "id": "674c8eb3-5af8-40bc-a931-e6ca7794e0d1",
+        "label": "Y Combinator",
+        "kind": "us_investor"
+      },
+      {
+        "id": "bb1d136f-93b7-4d3f-a1ac-91babfc0ae8a",
+        "label": "SOSV",
+        "kind": "us_investor"
+      },
+      {
+        "id": "21aa3264-73e7-4327-afae-dd46e6ecd228",
+        "label": "Plug and Play",
+        "kind": "us_investor"
+      },
+      {
+        "id": "5d952b63-2112-493d-aced-14ce6769bb4b",
+        "label": "Zetta Venture Partners",
+        "kind": "us_investor"
+      },
+      {
+        "id": "1373daf5-21e2-4760-a88f-87911260d2c3",
+        "label": "LDV Capital",
+        "kind": "us_investor"
+      },
+      {
+        "id": "e7e81cc8-2c71-4712-abdd-71adad8b1e5a",
+        "label": "Ascension Ventures",
+        "kind": "us_investor"
+      },
+      {
+        "id": "1686161c-4948-4dd5-a330-3324b2c7fb56",
+        "label": "OMX Ventures",
+        "kind": "us_investor"
+      },
+      {
+        "id": "36322b83-b97b-496c-abef-131d8c95e348",
+        "label": "Seedcamp",
+        "kind": "bridge_investor"
+      },
+      {
+        "id": "76e25453-55db-4574-ac18-a77b143291f3",
+        "label": "Kindred Capital",
+        "kind": "bridge_investor"
+      },
+      {
+        "id": "203d7fa8-c136-41b3-affb-4b01399621b9",
+        "label": "Octopus Ventures",
+        "kind": "bridge_investor"
+      },
+      {
+        "id": "6419c71a-54f4-4fbb-a494-bf5d48b919fb",
+        "label": "Ada Ventures",
+        "kind": "bridge_investor"
+      },
+      {
+        "id": "472ca4d8-5462-42e3-a8a7-ccf3d3ece505",
+        "label": "Droplet Scientific",
+        "kind": "company"
+      },
+      {
+        "id": "b512b264-a00b-4820-a5f5-4056db9c1e95",
+        "label": "Fuse",
+        "kind": "company"
+      },
+      {
+        "id": "6606894e-9e22-4914-a68d-4e53c31ce767",
+        "label": "Neurotype",
+        "kind": "company"
+      },
+      {
+        "id": "dfbfaa2d-a209-4a01-ac14-c864cea99f04",
+        "label": "Hesta Health",
+        "kind": "company"
+      },
+      {
+        "id": "5af86a3e-8a94-43e8-af57-41a61a86b6c3",
+        "label": "Aurum Diagnostics",
+        "kind": "company"
+      },
+      {
+        "id": "2ac66476-687b-4094-a8aa-12a9619d9a2b",
+        "label": "Nuvia Care",
+        "kind": "company"
+      },
+      {
+        "id": "84644299-8821-4754-aa83-6d33dcae55f0",
+        "label": "Calla Lab",
+        "kind": "company"
+      },
+      {
+        "id": "39d71da3-f846-460e-acbc-4d2db0984707",
+        "label": "Brightwell Therapeutics",
+        "kind": "company"
+      },
+      {
+        "id": "d3d0b833-52ab-46b1-a49b-f4ac951b67ef",
+        "label": "Ostia Health",
+        "kind": "company"
+      },
+      {
+        "id": "4b5ed497-9da3-4b56-ad7f-dabcb2647f0b",
+        "label": "Pelican Diagnostics",
+        "kind": "company"
+      },
+      {
+        "id": "9f30fc06-68a8-42db-a525-d40abd340181",
+        "label": "Mira Neuro",
+        "kind": "company"
+      },
+      {
+        "id": "bbf106b6-da8a-4cfa-aa76-25476a327b25",
+        "label": "Quanta Bio",
+        "kind": "company"
+      },
+      {
+        "id": "0f253cb8-719c-4c88-a8ce-eb68f3cdfbe5",
+        "label": "Halo Sleep",
+        "kind": "company"
+      },
+      {
+        "id": "17fd7c97-b383-4426-a4ca-b39b28a09c65",
+        "label": "Tidewell",
+        "kind": "company"
+      },
+      {
+        "id": "411f2e26-183b-49ca-a1fd-9f4cae67620b",
+        "label": "Verity Clinical",
+        "kind": "company"
+      },
+      {
+        "id": "b1b04d80-c4d4-4a96-a84d-8d2a8b6064a6",
+        "label": "Sable Genomics",
+        "kind": "company"
+      },
+      {
+        "id": "dbeb91ff-ca10-4df9-abb9-f86c630849b0",
+        "label": "Northlight Health",
+        "kind": "company"
+      },
+      {
+        "id": "b13af5ea-c947-442d-a240-f8e3777a3b41",
+        "label": "Cobalt Care",
+        "kind": "company"
+      },
+      {
+        "id": "e300413a-8644-4ce2-abe1-8d91460fb024",
+        "label": "Fernhill Medical",
+        "kind": "company"
+      },
+      {
+        "id": "e89b4979-a68f-434e-a0dc-aaa201df07b0",
+        "label": "Larkspur Bio",
+        "kind": "company"
+      },
+      {
+        "id": "c0a5d1ff-8bc0-4bb8-ace9-b3d9b4ab907e",
+        "label": "Wren Health",
+        "kind": "company"
+      },
+      {
+        "id": "e8e20025-a9c0-4398-a2ea-8d59560f2945",
+        "label": "Kestrel Diagnostics",
+        "kind": "company"
+      },
+      {
+        "id": "133ca90b-98b9-404b-a9f1-1d1c1557bb16",
+        "label": "Rowan Therapeutics",
+        "kind": "company"
+      },
+      {
+        "id": "bad78b55-7abd-4f83-a840-82a033d1ea01",
+        "label": "Elmstone AI",
+        "kind": "company"
+      },
+      {
+        "id": "1f00bbdf-5343-4fe5-a4c5-fc3c1a8a1b34",
+        "label": "Aster Health",
+        "kind": "company"
+      }
+    ],
+    "edges": [
+      {
+        "source": "36322b83-b97b-496c-abef-131d8c95e348",
+        "target": "472ca4d8-5462-42e3-a8a7-ccf3d3ece505",
+        "is_lead": true
+      },
+      {
+        "source": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+        "target": "472ca4d8-5462-42e3-a8a7-ccf3d3ece505",
+        "is_lead": false
+      },
+      {
+        "source": "bb1d136f-93b7-4d3f-a1ac-91babfc0ae8a",
+        "target": "472ca4d8-5462-42e3-a8a7-ccf3d3ece505",
+        "is_lead": false
+      },
+      {
+        "source": "76e25453-55db-4574-ac18-a77b143291f3",
+        "target": "b512b264-a00b-4820-a5f5-4056db9c1e95",
+        "is_lead": true
+      },
+      {
+        "source": "674c8eb3-5af8-40bc-a931-e6ca7794e0d1",
+        "target": "b512b264-a00b-4820-a5f5-4056db9c1e95",
+        "is_lead": false
+      },
+      {
+        "source": "36322b83-b97b-496c-abef-131d8c95e348",
+        "target": "b512b264-a00b-4820-a5f5-4056db9c1e95",
+        "is_lead": false
+      },
+      {
+        "source": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+        "target": "6606894e-9e22-4914-a68d-4e53c31ce767",
+        "is_lead": false
+      },
+      {
+        "source": "6419c71a-54f4-4fbb-a494-bf5d48b919fb",
+        "target": "6606894e-9e22-4914-a68d-4e53c31ce767",
+        "is_lead": true
+      },
+      {
+        "source": "203d7fa8-c136-41b3-affb-4b01399621b9",
+        "target": "dfbfaa2d-a209-4a01-ac14-c864cea99f04",
+        "is_lead": true
+      },
+      {
+        "source": "21aa3264-73e7-4327-afae-dd46e6ecd228",
+        "target": "dfbfaa2d-a209-4a01-ac14-c864cea99f04",
+        "is_lead": false
+      },
+      {
+        "source": "e7e81cc8-2c71-4712-abdd-71adad8b1e5a",
+        "target": "dfbfaa2d-a209-4a01-ac14-c864cea99f04",
+        "is_lead": false
+      },
+      {
+        "source": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+        "target": "5af86a3e-8a94-43e8-af57-41a61a86b6c3",
+        "is_lead": true
+      },
+      {
+        "source": "36322b83-b97b-496c-abef-131d8c95e348",
+        "target": "2ac66476-687b-4094-a8aa-12a9619d9a2b",
+        "is_lead": true
+      },
+      {
+        "source": "21aa3264-73e7-4327-afae-dd46e6ecd228",
+        "target": "2ac66476-687b-4094-a8aa-12a9619d9a2b",
+        "is_lead": false
+      },
+      {
+        "source": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+        "target": "2ac66476-687b-4094-a8aa-12a9619d9a2b",
+        "is_lead": false
+      },
+      {
+        "source": "bb1d136f-93b7-4d3f-a1ac-91babfc0ae8a",
+        "target": "84644299-8821-4754-aa83-6d33dcae55f0",
+        "is_lead": true
+      },
+      {
+        "source": "76e25453-55db-4574-ac18-a77b143291f3",
+        "target": "84644299-8821-4754-aa83-6d33dcae55f0",
+        "is_lead": false
+      },
+      {
+        "source": "203d7fa8-c136-41b3-affb-4b01399621b9",
+        "target": "39d71da3-f846-460e-acbc-4d2db0984707",
+        "is_lead": true
+      },
+      {
+        "source": "1686161c-4948-4dd5-a330-3324b2c7fb56",
+        "target": "39d71da3-f846-460e-acbc-4d2db0984707",
+        "is_lead": false
+      },
+      {
+        "source": "674c8eb3-5af8-40bc-a931-e6ca7794e0d1",
+        "target": "39d71da3-f846-460e-acbc-4d2db0984707",
+        "is_lead": false
+      },
+      {
+        "source": "674c8eb3-5af8-40bc-a931-e6ca7794e0d1",
+        "target": "d3d0b833-52ab-46b1-a49b-f4ac951b67ef",
+        "is_lead": true
+      },
+      {
+        "source": "6419c71a-54f4-4fbb-a494-bf5d48b919fb",
+        "target": "d3d0b833-52ab-46b1-a49b-f4ac951b67ef",
+        "is_lead": false
+      },
+      {
+        "source": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+        "target": "4b5ed497-9da3-4b56-ad7f-dabcb2647f0b",
+        "is_lead": false
+      },
+      {
+        "source": "36322b83-b97b-496c-abef-131d8c95e348",
+        "target": "4b5ed497-9da3-4b56-ad7f-dabcb2647f0b",
+        "is_lead": true
+      },
+      {
+        "source": "1373daf5-21e2-4760-a88f-87911260d2c3",
+        "target": "4b5ed497-9da3-4b56-ad7f-dabcb2647f0b",
+        "is_lead": false
+      },
+      {
+        "source": "5d952b63-2112-493d-aced-14ce6769bb4b",
+        "target": "9f30fc06-68a8-42db-a525-d40abd340181",
+        "is_lead": true
+      },
+      {
+        "source": "76e25453-55db-4574-ac18-a77b143291f3",
+        "target": "9f30fc06-68a8-42db-a525-d40abd340181",
+        "is_lead": false
+      },
+      {
+        "source": "bb1d136f-93b7-4d3f-a1ac-91babfc0ae8a",
+        "target": "bbf106b6-da8a-4cfa-aa76-25476a327b25",
+        "is_lead": false
+      },
+      {
+        "source": "203d7fa8-c136-41b3-affb-4b01399621b9",
+        "target": "bbf106b6-da8a-4cfa-aa76-25476a327b25",
+        "is_lead": true
+      },
+      {
+        "source": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+        "target": "0f253cb8-719c-4c88-a8ce-eb68f3cdfbe5",
+        "is_lead": true
+      },
+      {
+        "source": "21aa3264-73e7-4327-afae-dd46e6ecd228",
+        "target": "0f253cb8-719c-4c88-a8ce-eb68f3cdfbe5",
+        "is_lead": false
+      },
+      {
+        "source": "674c8eb3-5af8-40bc-a931-e6ca7794e0d1",
+        "target": "17fd7c97-b383-4426-a4ca-b39b28a09c65",
+        "is_lead": false
+      },
+      {
+        "source": "36322b83-b97b-496c-abef-131d8c95e348",
+        "target": "17fd7c97-b383-4426-a4ca-b39b28a09c65",
+        "is_lead": false
+      },
+      {
+        "source": "76e25453-55db-4574-ac18-a77b143291f3",
+        "target": "17fd7c97-b383-4426-a4ca-b39b28a09c65",
+        "is_lead": true
+      },
+      {
+        "source": "21aa3264-73e7-4327-afae-dd46e6ecd228",
+        "target": "411f2e26-183b-49ca-a1fd-9f4cae67620b",
+        "is_lead": false
+      },
+      {
+        "source": "6419c71a-54f4-4fbb-a494-bf5d48b919fb",
+        "target": "411f2e26-183b-49ca-a1fd-9f4cae67620b",
+        "is_lead": true
+      },
+      {
+        "source": "e7e81cc8-2c71-4712-abdd-71adad8b1e5a",
+        "target": "411f2e26-183b-49ca-a1fd-9f4cae67620b",
+        "is_lead": false
+      },
+      {
+        "source": "1686161c-4948-4dd5-a330-3324b2c7fb56",
+        "target": "b1b04d80-c4d4-4a96-a84d-8d2a8b6064a6",
+        "is_lead": true
+      },
+      {
+        "source": "bb1d136f-93b7-4d3f-a1ac-91babfc0ae8a",
+        "target": "b1b04d80-c4d4-4a96-a84d-8d2a8b6064a6",
+        "is_lead": false
+      },
+      {
+        "source": "203d7fa8-c136-41b3-affb-4b01399621b9",
+        "target": "b1b04d80-c4d4-4a96-a84d-8d2a8b6064a6",
+        "is_lead": false
+      },
+      {
+        "source": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+        "target": "dbeb91ff-ca10-4df9-abb9-f86c630849b0",
+        "is_lead": false
+      },
+      {
+        "source": "21aa3264-73e7-4327-afae-dd46e6ecd228",
+        "target": "dbeb91ff-ca10-4df9-abb9-f86c630849b0",
+        "is_lead": false
+      },
+      {
+        "source": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+        "target": "b13af5ea-c947-442d-a240-f8e3777a3b41",
+        "is_lead": false
+      },
+      {
+        "source": "36322b83-b97b-496c-abef-131d8c95e348",
+        "target": "b13af5ea-c947-442d-a240-f8e3777a3b41",
+        "is_lead": true
+      },
+      {
+        "source": "bb1d136f-93b7-4d3f-a1ac-91babfc0ae8a",
+        "target": "e300413a-8644-4ce2-abe1-8d91460fb024",
+        "is_lead": true
+      },
+      {
+        "source": "1373daf5-21e2-4760-a88f-87911260d2c3",
+        "target": "e89b4979-a68f-434e-a0dc-aaa201df07b0",
+        "is_lead": true
+      },
+      {
+        "source": "5d952b63-2112-493d-aced-14ce6769bb4b",
+        "target": "e89b4979-a68f-434e-a0dc-aaa201df07b0",
+        "is_lead": false
+      },
+      {
+        "source": "76e25453-55db-4574-ac18-a77b143291f3",
+        "target": "e89b4979-a68f-434e-a0dc-aaa201df07b0",
+        "is_lead": false
+      },
+      {
+        "source": "674c8eb3-5af8-40bc-a931-e6ca7794e0d1",
+        "target": "c0a5d1ff-8bc0-4bb8-ace9-b3d9b4ab907e",
+        "is_lead": false
+      },
+      {
+        "source": "6419c71a-54f4-4fbb-a494-bf5d48b919fb",
+        "target": "c0a5d1ff-8bc0-4bb8-ace9-b3d9b4ab907e",
+        "is_lead": false
+      },
+      {
+        "source": "e7e81cc8-2c71-4712-abdd-71adad8b1e5a",
+        "target": "e8e20025-a9c0-4398-a2ea-8d59560f2945",
+        "is_lead": true
+      },
+      {
+        "source": "21aa3264-73e7-4327-afae-dd46e6ecd228",
+        "target": "e8e20025-a9c0-4398-a2ea-8d59560f2945",
+        "is_lead": false
+      },
+      {
+        "source": "203d7fa8-c136-41b3-affb-4b01399621b9",
+        "target": "e8e20025-a9c0-4398-a2ea-8d59560f2945",
+        "is_lead": false
+      },
+      {
+        "source": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+        "target": "133ca90b-98b9-404b-a9f1-1d1c1557bb16",
+        "is_lead": false
+      },
+      {
+        "source": "674c8eb3-5af8-40bc-a931-e6ca7794e0d1",
+        "target": "133ca90b-98b9-404b-a9f1-1d1c1557bb16",
+        "is_lead": false
+      },
+      {
+        "source": "36322b83-b97b-496c-abef-131d8c95e348",
+        "target": "133ca90b-98b9-404b-a9f1-1d1c1557bb16",
+        "is_lead": true
+      },
+      {
+        "source": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+        "target": "bad78b55-7abd-4f83-a840-82a033d1ea01",
+        "is_lead": true
+      },
+      {
+        "source": "bb1d136f-93b7-4d3f-a1ac-91babfc0ae8a",
+        "target": "bad78b55-7abd-4f83-a840-82a033d1ea01",
+        "is_lead": false
+      },
+      {
+        "source": "21aa3264-73e7-4327-afae-dd46e6ecd228",
+        "target": "1f00bbdf-5343-4fe5-a4c5-fc3c1a8a1b34",
+        "is_lead": false
+      },
+      {
+        "source": "76e25453-55db-4574-ac18-a77b143291f3",
+        "target": "1f00bbdf-5343-4fe5-a4c5-fc3c1a8a1b34",
+        "is_lead": true
+      }
+    ]
+  },
+  "caveats": [
+    "Saved snapshot: a sample of the cohort, not the full list of 109 US investors.",
+    "Investor HQ comes from Dealroom's investor profile; some HQs and angel entries may be misattributed.",
+    "Valuations may include Dealroom estimates.",
+    "2026 is a partial year."
+  ]
+}

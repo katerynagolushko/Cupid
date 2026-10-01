@@ -1,0 +1,69 @@
+Quantum Desk: demo and build guide | Dealroom
+Skip to content
+Product
+Reports
+Resources
+Pricing
+Login
+Book a demo
+Product
+Reports
+Resources
+Pricing
+Book a demo
+← All demos
+Quantum Desk
+Explore quantum companies and their founders
+See funding momentum, compare quantum companies and inspect the recorded backgrounds of their founders.
+Open demo
+↗
+Copy build prompt
+What this demo does
+Compare companies in your investment area and check the founder evidence before deciding who to research further.
+The data
+Saved quantum company and funding data, with selected founder education and career profiles. Founder coverage is shown rather than filled in when records are missing.
+What it does not tell you
+Funding is not a measure of technical quality. Missing education records do not mean a founder lacks a degree. The demo is a dated snapshot, not a live sourcing feed.
+Build your own
+Copy this into a coding assistant that can build apps. Adapt the brief before you start. You will need your own Dealroom API access for live data; never paste a secret into the prompt.
+Read the build prompt
+Build Quantum Desk for an investor researching quantum startups. Include an overview of funding momentum, an interactive company landscape, recent rounds, a watchlist and a prominent Founder-first tab.
+Let me filter geography, total funding and quantum segment. Start with Europe and a configurable $5M-$50M funding range. Separate mature diversified corporates from startup comparisons. Show companies and actual funding records behind aggregate charts; use the same cohort definition for comparisons and disclose differences.
+Founder-first should show recorded founders, education, degrees where explicitly recorded, prior employers and earlier ventures, with source/profile links and coverage notes. Explain what evidence is available, without inventing a founder-quality score or ranking degrees. Clicking a company opens its funding, team and background details. Keep my notes and watchlist browser-local.
+First read the Dealroom Premium API documentation at https://docs.dealroom.co/docs/premium-api. Discover supported filters and resolve taxonomy IDs rather than guessing them. Check current data availability before committing to a feature.
+Use my own Dealroom Programmatic (M2M) credentials through a server-only environment file excluded from Git. Never ask me to paste a secret into chat or embed credentials in frontend code. Implement the documented OAuth2 client-credentials flow, cache tokens, refresh once on expiry, and send Authorization and X-Client-Id. Respect access limits, pagination and Retry-After. Do not silently treat a failed or restricted response as an empty dataset.
+Build a working responsive web app, not a mockup. Start with a bounded cohort and cache responses with retrieval dates. Show currency, sources, missing values and partial coverage. Keep a clearly labelled saved-data mode for a public demo. Include loading, empty and error states, accessible keyboard alternatives, tests for the data joins and a README explaining setup. Do not publish, send messages or write to Dealroom without asking me.
+Reference demo: https://dealroom.co/api/showcase/quantum-desk/
+Build guide: https://dealroom.co/cookbooks/quantum-desk/
+Copy build prompt
+How it works
+These are the data joins behind the app. Confirm current routes, filters and response shapes in the
+API documentation
+before implementing them.
+Define the quantum cohort
+Resolve quantum taxonomy and geography through filter discovery. Document startup exclusions and the funding range, currency and date window.
+GET /reference/filters?scope=companies
+GET /reference/filters/search
+GET /data/companies
+Separate trends from records
+Use analytics for funding trends and company or transaction endpoints for the actual deals. Do not present a limited company sample as a whole-market total.
+GET /analytics/timeseries
+GET /data/transactions
+GET /data/companies/{id}/funding-rounds
+Attach founder evidence
+Join recorded team and founder UUIDs to person profiles and career records. Show explicit education and roles; leave absent fields unfilled.
+GET /data/companies/{id}/team
+GET /data/founders
+GET /data/people/{id}/career
+Keep founder research visible
+Give founder backgrounds their own tab. Retain the overview, landscape and deal-flow views, with browser-local notes and watchlists.
+Connect safely
+Use Programmatic (M2M) credentials in a server-only environment file excluded from Git. The documented OAuth flow returns a token; requests need both Authorization and X-Client-Id. Cache responses and tokens, handle pagination and rate limits, and display retrieval dates and incomplete coverage.
+A public version can serve a reviewed saved snapshot. A live shared workspace also needs authentication, storage and controls for who can see personal notes or export records.
+Read the API documentation →
+Explore the records in
+Quantum Desk
+.
+Copy the build prompt
+Your browser could not copy automatically. Select and copy the text below.
+Close

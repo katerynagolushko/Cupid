@@ -1,0 +1,56 @@
+{
+  "results": [
+    {
+      "uuid": "472ca4d8-5462-42e3-a8a7-ccf3d3ece505",
+      "name": "Droplet Scientific",
+      "tagline": "Microfluidic diagnostics for point-of-care blood testing",
+      "hq_country": "United Kingdom",
+      "image": null,
+      "industry": {
+        "id": 125403,
+        "name": "Health"
+      },
+      "last_round": "Seed",
+      "region_id": 93
+    },
+    {
+      "uuid": "b512b264-a00b-4820-a5f5-4056db9c1e95",
+      "name": "Fuse",
+      "tagline": "Care coordination platform for NHS community teams",
+      "hq_country": "United Kingdom",
+      "image": null,
+      "industry": {
+        "id": 125403,
+        "name": "Health"
+      },
+      "last_round": "Seed",
+      "region_id": 93
+    },
+    {
+      "uuid": "6606894e-9e22-4914-a68d-4e53c31ce767",
+      "name": "Neurotype",
+      "tagline": "Digital biomarkers for early neurodevelopmental assessment",
+      "hq_country": "United Kingdom",
+      "image": null,
+      "industry": {
+        "id": 125403,
+        "name": "Health"
+      },
+      "last_round": "Pre-Seed",
+      "region_id": 93
+    },
+    {
+      "uuid": "dfbfaa2d-a209-4a01-ac14-c864cea99f04",
+      "name": "Hesta Health",
+      "tagline": "Women's health clinic network with remote monitoring",
+      "hq_country": "United Kingdom",
+      "image": null,
+      "industry": {
+        "id": 125403,
+        "name": "Health"
+      },
+      "last_round": "Seed",
+      "region_id": 93
+    }
+  ]
+}

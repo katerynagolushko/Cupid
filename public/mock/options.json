@@ -1,0 +1,53 @@
+{
+  "industries": [
+    {
+      "id": 125403,
+      "name": "Health"
+    },
+    {
+      "id": 126403,
+      "name": "Fintech"
+    },
+    {
+      "id": 125703,
+      "name": "Energy"
+    },
+    {
+      "id": 126203,
+      "name": "Enterprise software"
+    },
+    {
+      "id": 126503,
+      "name": "Food"
+    },
+    {
+      "id": 125903,
+      "name": "Education"
+    }
+  ],
+  "stages": [
+    "Pre-Seed",
+    "Seed",
+    "Series A",
+    "Series B"
+  ],
+  "regions": [
+    {
+      "id": 93,
+      "name": "United Kingdom"
+    },
+    {
+      "id": 416,
+      "name": "European Union + UK"
+    }
+  ],
+  "defaults": {
+    "industry": 125403,
+    "stages": [
+      "Pre-Seed",
+      "Seed"
+    ],
+    "region": 93,
+    "since": 2024
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "investor": {
+    "uuid": "4559bae6-98eb-44b9-a92a-c42be8d74f65",
+    "name": "Techstars",
+    "domain": "techstars.com"
+  },
+  "stated": {
+    "source_urls": [
+      "https://www.techstars.com/accelerators",
+      "https://www.techstars.com/about"
+    ],
+    "fetched_at": "2026-10-01T16:06:12Z",
+    "method": "keyword",
+    "stages": [
+      "Pre-Seed"
+    ],
+    "sectors": [
+      "Health",
+      "Fintech",
+      "Climate",
+      "AI"
+    ],
+    "geographies": [
+      "US",
+      "Europe",
+      "Global"
+    ],
+    "cheque": {
+      "min": 20000,
+      "max": 120000
+    },
+    "quotes": [
+      "Techstars invests in pre-seed founders through accelerator programmes around the world.",
+      "We provide $220,000 in funding to each company that joins a Techstars accelerator."
+    ]
+  },
+  "revealed": {
+    "stages": {
+      "Seed": 5,
+      "Pre-Seed": 5
+    },
+    "industry_deals": 10,
+    "region_deals": 10,
+    "leads": 3,
+    "last_deal": "2026-07"
+  },
+  "verdict": {
+    "stage": "mismatch",
+    "sector": "match",
+    "geography": "match",
+    "summary": "Says it backs pre-seed founders globally; has actually done 10 UK health pre-seed/seed deals since 2024 (led 3), 5 of them at Seed."
+  }
+}

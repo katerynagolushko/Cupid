@@ -1,0 +1,10 @@
+.env
+*.env
+.dealroom-token.json
+dealroom-*.zip
+node_modules/
+.DS_Store
+SETUP.txt
+cache/
+.openai.env
+.vercel

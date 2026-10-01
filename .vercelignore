@@ -1,0 +1,10 @@
+.env
+*.env
+.openai.env
+.dealroom-token.json
+dealroom-*.zip
+SETUP.txt
+scratch/
+docs/
+.git/
+.DS_Store
