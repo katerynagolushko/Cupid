@@ -8,3 +8,5 @@ scratch/
 docs/
 .git/
 .DS_Store
+.env.*
+.vercel

@@ -8,3 +8,4 @@ SETUP.txt
 cache/
 .openai.env
 .vercel
+.env*

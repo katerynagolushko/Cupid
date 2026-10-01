@@ -9,7 +9,7 @@ const PUBLIC_DIR = join(process.cwd(), "public");
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".ico": "image/x-icon" };
 
 async function serveStatic(pathname, res) {
-  const rel = normalize(pathname === "/" ? "/angels.html" : pathname).replace(/^(\.\.[/\\])+/, "");
+  const rel = normalize(pathname === "/" ? "/index.html" : pathname).replace(/^(\.\.[/\\])+/, "");
   const file = join(PUBLIC_DIR, rel);
   if (!file.startsWith(PUBLIC_DIR)) { res.writeHead(403).end(); return; }
   try {
